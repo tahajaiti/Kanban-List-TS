@@ -9,7 +9,7 @@
   <title>Document</title>
 </head>
 
-<body class="bg-greytwo w-full h-full">
+<body class="bg-greytwo w-full h-full relative">
   <header class="flex items-center justify-start bg-greyone py-2 shadow-xl">
     <span class="icon-[material-symbols--check-circle-outline] text-5xl text-whiteone"></span>
     <h1 class="text-4xl text-whiteone">TASKFLOW</h1>
@@ -24,7 +24,6 @@
       </div>
 
       <!-- Section container -->
-
       <div class="flex justify-around gap-8 2xl:gap-4 mt-16 overflow-x-scroll 2xl:overflow-hidden">
         <!-- DONE SECTION -->
         <div class="w-[30rem] border-2 rounded-[15px] shadow-xl">
@@ -59,6 +58,8 @@
               </div>
             </div>
             <!--  -->
+
+
           </div>
           <!--  -->
         </div>
@@ -142,8 +143,69 @@
         <!--  -->
 
       </div>
-
+      <!--  -->
     </section>
+
+    <!-- FULL DISPLAY-->
+    <section
+      class="h-screen w-screen bg-greyoneop hidden flex justify-center items-center backdrop-blur-xl absolute top-0">
+      <!-- MAIN CONTAINER -->
+      <div
+        class="lg:w-1/2 lg:h-1/2 w-full h-2/3 bg-whiteone gap-4 rounded-[15px] pt-3 px-3 flex flex-col justify-evenly">
+        <div class="flex justify-between">
+          <span
+            class="icon-[mage--trash] text-5xl text-greytwo hover:bg-red-500 hover:scale-105 active:scale-95 active:bg-red-600 cursor-pointer transition-all"></span>
+          <div class="text-2xl text-greytwo font-medium w-[35rem] text-center mr-[1.6rem]">
+            TITLE
+          </div>
+          <span class="icon-[mdi--close] text-2xl text-greytwo cursor-pointer">X</span>
+        </div>
+        <div class="bg-greyone text-whiteone text-xl mt-6 p-4 w-full h-2/3 shadow-inner rounded-[15px] overflow-auto ">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum molestias repellat, veritatis eius
+          temporibus quod veniam laboriosam tenetur unde praesentium! Esse, dolorem laudantium fugiat quas laboriosam
+        </div>
+        <div class="flex justify-between content-baseline">
+          <div class="bg-datecol left-tag shadow-xl rounded-[15px] ">DATE</div>
+          <div class="bg-red-500 right-tag shadow-xl rounded-[15px]">P1</div>
+        </div>
+      </div>
+      <!--  -->
+    </section>
+    <!--  -->
+
+
+    <!-- FULL ADD -->
+    <section
+      class="h-screen w-screen bg-greyoneop flex justify-center items-center backdrop-blur-xl absolute top-0">
+      <!-- MAIN CONTAINER -->
+      <div
+        class="lg:w-3/4 lg:h-fit w-full h-fit bg-whiteone gap-4 rounded-[15px] pt-3 px-3 flex flex-col border border-red-600">
+        <!--  -->
+        <div class="flex justify-between items-center border">
+          <span
+            class="icon-[ic--round-add] text-5xl text-center text-greytwo hover:text-greyone hover:scale-105 active:scale-95 active:text-greydark cursor-pointer transition-all">+</span>
+          <div class="text-2xl text-greytwo font-medium w-[35rem] text-center mr-[1.6rem]">
+            ADD
+          </div>
+          <span class="icon-[mdi--close] text-2xl text-greytwo cursor-pointer">X</span>
+        </div>
+        <!--  -->
+
+        <!-- FORM -->
+        <div class=" flex justify-evenly items-center mb-3">
+            <label for="title" class="text-2xl">Title</label>
+            <input type="text" name="title" class="bg-greyone text-whiteone h-9 rounded-md p-2">
+            <label for="dcrp" class="text-2xl">Description</label>
+            <input type="text" name="dcrp" class="bg-greyone text-whiteone h-9 rounded-md p-2">
+            <label for="date" class="text-2xl">Date</label>
+            <input type="date" name="date" class="bg-greyone text-whiteone h-9 rounded-md p-2">
+        </div>
+        <!--  -->
+
+      </div>
+      <!--  -->
+    </section>
+    <!--  -->
   </main>
 </body>
 
