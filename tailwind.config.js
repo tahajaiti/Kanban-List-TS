@@ -12,6 +12,7 @@ module.exports = {
         greyone: "#495057",
         greyoneop: "rgba(73, 80, 87, 0.5)",
         greytwo: "#343A40",
+        greydark: "#212529",
         greenone: "#6DD483",
         greentwo: "#4A9A77",
         yellowone: "#DEE178",

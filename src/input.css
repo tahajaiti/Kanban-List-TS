@@ -27,6 +27,8 @@
 ::-webkit-scrollbar-track {
     background: #CED4DA;
     border-bottom-right-radius: 15px;
+    border-right: 20px;
+    border-color: #212529;
 }
 
 /* Handle */
