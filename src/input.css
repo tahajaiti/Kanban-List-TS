@@ -15,6 +15,26 @@
         @apply w-1/4 h-1/2 flex justify-center p-1 text-xl rounded-tl-[15px] rounded-br-[15px];
     }
     .card{
-        @apply border rounded-[15px]  w-full my-4 flex flex-col shadow-xl transition-all cursor-pointer;
+        @apply border rounded-[15px]  w-full my-4 flex flex-col active:scale-[0.95] shadow-xl transition-all cursor-pointer;
     }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #CED4DA;
+    border-bottom-right-radius: 15px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

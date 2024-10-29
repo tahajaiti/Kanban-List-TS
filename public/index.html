@@ -15,7 +15,7 @@
     <h1 class="text-4xl text-whiteone">TASKFLOW</h1>
   </header>
 
-  <main class="mt-20 p-2 w-full h-[84.5vh] bg-gray-900">
+  <main class="mt-20 w-full h-[84.5vh]">
     <section>
 
       <!-- Add Button -->
@@ -24,65 +24,117 @@
       </div>
 
       <!-- Section container -->
-      <div class="flex justify-evenly gap-20 mt-16 mx-8">
+
+      <div class="flex justify-around gap-8 2xl:gap-4 mt-16 overflow-x-scroll 2xl:overflow-hidden">
         <!-- TODO SECTION -->
-        <div class="bg-greyone w-1/3 min-h-min rounded-[15px]">
+        <div class="w-[30rem] ">
           <!-- HEADER -->
           <header>
-            <div class="flex justify-between bg-whiteone w-full p-3 rounded-[15px] shadow-xl">
+            <div class="flex justify-between bg-whiteone w-full p-3 rounded-tr-[15px] rounded-tl-[15px] shadow-2xl">
               <div
                 class="text-2xl text-greytwo font-medium bg-blueone rounded-[15px] w-[2.25rem] flex justify-center items-center">
                 0
               </div>
-              <div class="text-2xl text-greytwo font-medium">
+              <div class="text-2xl text-greytwo font-medium w-[35rem] text-center">
                 TO DO
               </div>
               <span class="icon-[mi--sort] text-3xl flex self-center text-greytwo "></span>
             </div>
           </header>
-          <!-- CONTENT -->
-          <div
-            class="bg-cardred hover:scale-[1.02] hover:bg-cardredhov active:scale-[0.98] active:bg-cardredactive card">
-            <div class="flex justify-between items-center mb-4 p-2">
-              <span class="icon-[mage--edit] text-3xl text-greytwo cursor-pointer"></span>
-              <p class="text-2xl text-greytwo font-mlight">Title 1</p>
-              <span class="icon-[mage--trash] text-3xl  text-greytwo"></span>
-            </div>
-            <div class="flex justify-between content-baseline">
-              <div class="bg-datecol left-tag ">DATE</div>
-              <div class="bg-red-500 right-tag">P1</div>
-            </div>
-          </div>
 
+          <!-- CONTAINER -->
+          <div
+            class="bg-greyoneop drop-shadow-lg w-full h-[30rem] overflow-y-scroll  rounded-br-[15px] rounded-bl-[15px]">
+            <!-- CARDS -->
+            <div class="bg-cardred hover:bg-cardredhov active:bg-cardredactive card">
+              <div class="flex justify-between items-center mb-4 p-2">
+                <span class="icon-[mage--edit] text-3xl text-greytwo cursor-pointer"></span>
+                <p class="text-2xl text-greytwo font-mlight">Title 1</p>
+                <span class="icon-[mage--trash] text-3xl  text-greytwo"></span>
+              </div>
+              <div class="flex justify-between content-baseline">
+                <div class="bg-datecol left-tag ">DATE</div>
+                <div class="bg-red-500 right-tag">P1</div>
+              </div>
+            </div>
+            <!--  -->
+          </div>
         </div>
+
+
 
         <!-- DOING SECTION -->
-        <div class="bg-greyone w-1/3 h-fit rounded-[15px]">
-          <div class="flex justify-between bg-whiteone w-full p-3 rounded-[15px]">
-            <div
-              class="text-2xl text-greytwo font-medium bg-yellowone rounded-[15px] w-[2.25rem] flex justify-center items-center">
-              0
+        <div class="w-[30rem] ">
+          <!-- HEADER -->
+          <header>
+            <div class="flex justify-between bg-whiteone w-full p-3 rounded-tr-[15px] rounded-tl-[15px] shadow-2xl">
+              <div
+                class="text-2xl text-greytwo font-medium bg-yellowone rounded-[15px] w-[2.25rem] flex justify-center items-center">
+                0
+              </div>
+              <div class="text-2xl text-greytwo font-medium w-[35rem] text-center">
+                DOING
+              </div>
+              <span class="icon-[mi--sort] text-3xl flex self-center text-greytwo "></span>
             </div>
-            <div class="text-2xl text-greytwo font-medium">
-              DOING
+          </header>
+
+          <!-- CONTAINER -->
+          <div
+            class="bg-greyoneop drop-shadow-lg w-full h-[30rem] overflow-y-scroll  rounded-br-[15px] rounded-bl-[15px]">
+            <!-- CARDS -->
+            <div class="bg-cardred hover:bg-cardredhov active:bg-cardredactive card">
+              <div class="flex justify-between items-center mb-4 p-2">
+                <span class="icon-[mage--edit] text-3xl text-greytwo cursor-pointer"></span>
+                <p class="text-2xl text-greytwo font-mlight">Title 1</p>
+                <span class="icon-[mage--trash] text-3xl  text-greytwo"></span>
+              </div>
+              <div class="flex justify-between content-baseline">
+                <div class="bg-datecol left-tag ">DATE</div>
+                <div class="bg-red-500 right-tag">P1</div>
+              </div>
             </div>
-            <span class="icon-[mi--sort] text-3xl flex self-center text-greytwo "></span>
+            <!--  -->
           </div>
         </div>
 
+
+
         <!-- DONE SECTION -->
-        <div class="bg-greyone w-1/3 h-fit rounded-[15px]">
-          <div class="flex justify-between bg-whiteone w-full p-3 rounded-[15px]">
-            <div
-              class="text-2xl text-greytwo font-medium bg-greenone rounded-[15px] w-[2.25rem] flex justify-center items-center">
-              0
+        <div class="w-[30rem] ">
+          <!-- HEADER -->
+          <header>
+            <div class="flex justify-between bg-whiteone w-full p-3 rounded-tr-[15px] rounded-tl-[15px] shadow-2xl">
+              <div
+                class="text-2xl text-greytwo font-medium bg-greenone rounded-[15px] w-[2.25rem] flex justify-center items-center">
+                0
+              </div>
+              <div class="text-2xl text-greytwo font-medium w-[35rem] text-center">
+                DOING
+              </div>
+              <span class="icon-[mi--sort] text-3xl flex self-center text-greytwo "></span>
             </div>
-            <div class="text-2xl text-greytwo font-medium">
-              DONE
+          </header>
+
+          <!-- CONTAINER -->
+          <div
+            class="bg-greyoneop drop-shadow-lg w-full h-[30rem] overflow-y-scroll  rounded-br-[15px] rounded-bl-[15px]">
+            <!-- CARDS -->
+            <div class="bg-cardred hover:bg-cardredhov active:bg-cardredactive card">
+              <div class="flex justify-between items-center mb-4 p-2">
+                <span class="icon-[mage--edit] text-3xl text-greytwo cursor-pointer"></span>
+                <p class="text-2xl text-greytwo font-mlight">Title 1</p>
+                <span class="icon-[mage--trash] text-3xl  text-greytwo"></span>
+              </div>
+              <div class="flex justify-between content-baseline">
+                <div class="bg-datecol left-tag ">DATE</div>
+                <div class="bg-red-500 right-tag">P1</div>
+              </div>
             </div>
-            <span class="icon-[mi--sort] text-3xl flex self-center text-greytwo "></span>
+            <!--  -->
           </div>
         </div>
+
       </div>
 
     </section>
