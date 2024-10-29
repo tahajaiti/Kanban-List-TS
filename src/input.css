@@ -6,7 +6,7 @@
 
 @layer components {
     .btn-primary {
-        @apply transition-all duration-200 hover:scale-105 hover:bg-whiteone hover:text-greyone shadow-lg flex justify-start border w-[8rem] text-[1.2rem] font-medium text-whiteone bg-greyone rounded-full pl-2 active:scale-[0.98] active:bg-greytwo active:text-whitethree;
+        @apply transition-all duration-200 hover:scale-105 hover:bg-whiteone hover:text-greyone cursor-pointer shadow-lg flex justify-start border w-[8rem] text-[1.2rem] font-medium text-whiteone bg-greyone rounded-full pl-2 active:scale-[0.98] active:bg-greytwo active:text-whitethree;
     }
     .left-tag{
         @apply text-greyone w-1/2 h-full flex justify-center p-1 text-xl rounded-tr-[15px] rounded-bl-[15px];
@@ -47,4 +47,22 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+@keyframes fadeIn {
+   from{
+    opacity: 0;
+   }
+   to{
+    opacity: 1;
+   }
+}
+
+@keyframes fadeOut {
+    from{
+     opacity: 1;
+    }
+    to{
+     opacity: 0;
+    }
+ }
 

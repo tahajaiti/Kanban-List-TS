@@ -2,7 +2,7 @@ const { addDynamicIconSelectors } = require("@iconify/tailwind");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./public/*.html"],
+  content: ["./public/*.html", "./public/assets/js/*.js"],
   theme: {
     extend: {
       colors: {
@@ -22,11 +22,18 @@ module.exports = {
         cardred: "#FF8080",
         cardredhov: "#FC8D8D",
         cardredactive: "#DD6F6F",
+        cardorange: "#FFBF90",
+        cardorangehov: "#FFD6B9",
+        cardorangeactive: "#DEA276",
+        cardgreen: "#84C893",
+        cardgreenhov: "#9BE9AC",
+        cardgreenactive: "#70BC81",
       },
       fontFamily: {
         brico: "Bricolage Grotesque",
       },
+      
     },
   },
-  plugins: [addDynamicIconSelectors()],
+  plugins: [addDynamicIconSelectors(),],
 };
