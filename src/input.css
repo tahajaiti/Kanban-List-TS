@@ -17,6 +17,12 @@
     .card{
         @apply border rounded-[15px]  w-[95%] my-4 flex flex-col active:scale-[0.95] shadow-xl transition-all cursor-pointer;
     }
+    .input-s{
+        @apply border bg-greyone text-whiteone h-fit w-full rounded-md p-2;
+    }
+    .is-dragging{
+        @apply scale-105 bg-whiteone shadow-2xl;
+    }
 }
 
 ::-webkit-scrollbar {
@@ -41,3 +47,4 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+

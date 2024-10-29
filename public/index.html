@@ -17,7 +17,6 @@
 
   <main class="mt-20 w-full h-[84.5vh]">
     <section>
-
       <!-- Add Button -->
       <div class="btn-primary flex text-center p-2 m-auto justify-center">
         ADD
@@ -43,9 +42,9 @@
 
           <!-- CONTAINER -->
           <div
-            class="bg-greyoneop flex flex-col items-center w-full h-[30rem] overflow-y-scroll  rounded-br-[15px] rounded-bl-[15px]">
+            class="swim-lane bg-greyoneop flex flex-col items-center w-full h-[30rem] overflow-y-scroll  rounded-br-[15px] rounded-bl-[15px]">
             <!-- CARDS -->
-            <div class="bg-cardred hover:bg-cardredhov active:bg-cardredactive card">
+            <div draggable="true" class="task bg-greenone hover:bg-cardredhov active:bg-cardredactive card">
               <div class="flex justify-between items-center mb-4 p-2">
                 <span
                   class="icon-[mage--edit] text-3xl text-greytwo cursor-pointer hover:bg-blue-500 transition-all"></span>
@@ -83,9 +82,9 @@
 
           <!-- CONTAINER -->
           <div
-            class="bg-greyoneop flex flex-col items-center w-full h-[30rem] overflow-y-scroll  rounded-br-[15px] rounded-bl-[15px]">
+            class="swim-lane bg-greyoneop flex flex-col items-center w-full h-[30rem] overflow-y-scroll  rounded-br-[15px] rounded-bl-[15px]">
             <!-- CARDS -->
-            <div class="bg-cardred hover:bg-cardredhov active:bg-cardredactive card">
+            <div draggable="ture" class="task bg-cardred hover:bg-cardredhov active:bg-cardredactive card">
               <div class="flex justify-between items-center mb-4 p-2">
                 <span
                   class="icon-[mage--edit] text-3xl text-greytwo cursor-pointer hover:bg-blue-500 transition-all"></span>
@@ -122,9 +121,9 @@
 
           <!-- CONTAINER -->
           <div
-            class="bg-greyoneop flex flex-col items-center drop-shadow-lg w-full h-[30rem] overflow-y-scroll  rounded-br-[15px] rounded-bl-[15px]">
+            class="swim-lane bg-greyoneop flex flex-col items-center drop-shadow-lg w-full h-[30rem] overflow-y-scroll  rounded-br-[15px] rounded-bl-[15px]">
             <!-- CARDS -->
-            <div class="bg-cardred hover:bg-cardredhov active:bg-cardredactive card">
+            <div draggable="true" class="task bg-cardred hover:bg-cardredhov active:bg-cardredactive card">
               <div class="flex justify-between items-center mb-4 p-2">
                 <span
                   class="icon-[mage--edit] text-3xl text-greytwo cursor-pointer hover:bg-blue-500 transition-all"></span>
@@ -137,6 +136,7 @@
               </div>
             </div>
             <!--  -->
+            
           </div>
           <!--  -->
         </div>
@@ -148,7 +148,7 @@
 
     <!-- FULL DISPLAY-->
     <section
-      class="h-screen w-screen bg-greyoneop hidden flex justify-center items-center backdrop-blur-xl absolute top-0">
+      class="hidden h-screen w-screen bg-greyoneop flex justify-center items-center backdrop-blur-xl absolute top-0">
       <!-- MAIN CONTAINER -->
       <div
         class="lg:w-1/2 lg:h-1/2 w-full h-2/3 bg-whiteone gap-4 rounded-[15px] pt-3 px-3 flex flex-col justify-evenly">
@@ -176,37 +176,70 @@
 
     <!-- FULL ADD -->
     <section
-      class="h-screen w-screen bg-greyoneop flex justify-center items-center backdrop-blur-xl absolute top-0">
+      class="hidden h-screen w-screen bg-greyoneop flex justify-center items-center backdrop-blur-xl absolute top-0">
       <!-- MAIN CONTAINER -->
       <div
-        class="lg:w-3/4 lg:h-fit w-full h-fit bg-whiteone gap-4 rounded-[15px] pt-3 px-3 flex flex-col border border-red-600">
+        class="lg:w-fit lg:h-fit w-screen h-screen bg-whiteone gap-4 rounded-[15px] pt-3 px-3 flex flex-col border border-greydark">
         <!--  -->
-        <div class="flex justify-between items-center border">
+        <div class="flex justify-between items-center">
           <span
-            class="icon-[ic--round-add] text-5xl text-center text-greytwo hover:text-greyone hover:scale-105 active:scale-95 active:text-greydark cursor-pointer transition-all">+</span>
-          <div class="text-2xl text-greytwo font-medium w-[35rem] text-center mr-[1.6rem]">
-            ADD
+            class="icon-[ic--round-add] text-5xl text-center text-greytwo hover:text-greyone hover:scale-110 active:scale-95 active:text-greydark cursor-pointer transition-all"></span>
+          <div class="text-2xl text-greytwo font-medium w-[35rem] text-center m-auto">
+            NEW TASK
           </div>
-          <span class="icon-[mdi--close] text-2xl text-greytwo cursor-pointer">X</span>
+          <span
+            class="icon-[mdi--close] text-5xl text-greytwo hover:scale-110 active:scale-95 active:text-greydark cursor-pointer transition-all"></span>
         </div>
         <!--  -->
 
         <!-- FORM -->
-        <div class=" flex justify-evenly items-center mb-3">
-            <label for="title" class="text-2xl">Title</label>
-            <input type="text" name="title" class="bg-greyone text-whiteone h-9 rounded-md p-2">
-            <label for="dcrp" class="text-2xl">Description</label>
-            <input type="text" name="dcrp" class="bg-greyone text-whiteone h-9 rounded-md p-2">
-            <label for="date" class="text-2xl">Date</label>
-            <input type="date" name="date" class="bg-greyone text-whiteone h-9 rounded-md p-2">
+        <div
+          class=" flex flex-row items-center mb-3 flex-wrap gap-2 bg-slate-400 p-2 rounded-md border border-greydark shadow-xl">
+          <div>
+            <label for="title" class="text-2xl text-greytwo">Title</label>
+            <input type="text" name="title" class="input-s">
+          </div>
+          <div>
+            <label for="dcrp" class="text-2xl text-greytwo">Description</label>
+            <input type="text" name="dcrp" class="input-s max-w-xl">
+          </div>
+          <div>
+            <label for="date" class="text-2xl text-greytwo">Date</label>
+            <input type="date" name="date" class="input-s">
+          </div>
+          <div>
+            <label for="status" class="text-2xl text-greytwo">Status</label>
+            <select name="status" id="" class="input-s">
+              <option value="todo">To Do</option>
+              <option value="doing">Doing</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+          <div>
+            <label for="priority" class="text-2xl text-greytwo">Priority</label>
+            <select name="priority" id="" class="input-s">
+              <option value="P3">P3</option>
+              <option value="P2">P2</option>
+              <option value="P1">P1</option>
+            </select>
+          </div>
         </div>
         <!--  -->
 
+        
+
+        <!-- APPLY BTN -->
+        <div class="btn-primary flex text-center p-2 m-auto justify-center mb-2">
+          ADD
+        </div>
+        <!--  -->
       </div>
       <!--  -->
     </section>
     <!--  -->
   </main>
+
+  <script src="assets/js/drag.js"></script>
 </body>
 
 </html>
