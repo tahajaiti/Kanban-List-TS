@@ -9,13 +9,13 @@
         @apply transition-all duration-200 hover:scale-105 hover:bg-whiteone hover:text-greyone shadow-lg flex justify-start border w-[8rem] text-[1.2rem] font-medium text-whiteone bg-greyone rounded-full pl-2 active:scale-[0.98] active:bg-greytwo active:text-whitethree;
     }
     .left-tag{
-        @apply w-1/2 h-1/2 flex justify-center p-1 text-xl rounded-tr-[15px] rounded-bl-[15px];
+        @apply w-1/2 h-full flex justify-center p-1 text-xl rounded-tr-[15px] rounded-bl-[15px];
     }
     .right-tag{
-        @apply w-1/4 h-1/2 flex justify-center p-1 text-xl rounded-tl-[15px] rounded-br-[15px];
+        @apply w-1/4 h-full flex justify-center p-1 text-xl rounded-tl-[15px] rounded-br-[15px];
     }
     .card{
-        @apply border rounded-[15px]  w-full my-4 flex flex-col active:scale-[0.95] shadow-xl transition-all cursor-pointer;
+        @apply border rounded-[15px]  w-[95%] my-4 flex flex-col active:scale-[0.95] shadow-xl transition-all cursor-pointer;
     }
 }
 
