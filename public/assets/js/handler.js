@@ -5,6 +5,9 @@ const applyBtn = document.querySelector("#applyBtn");
 const allTasks = document.querySelectorAll(".task");
 const taskContainers = document.querySelectorAll(".swim-lane");
 
+// loading tasks from localstorage
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
 // input array
 const formInputs = {
     title: document.querySelector("input[name='title']"),
@@ -13,9 +16,6 @@ const formInputs = {
     status: document.querySelector("select[name='status']"),
     priority: document.querySelector("select[name='priority']")
 };
-
-// loading tasks from localstorage
-let tasks = JSON.parse(localStorage.getItem("test222")) || [];
 
 // close and open add display
 addBtn.addEventListener("click", () => {
@@ -30,7 +30,12 @@ closeBtnAdd.addEventListener("click", () => {
     addDisplay.classList.add("hidden");
 });
 
-// create newtask
+//generate id
+const genId = () => {
+    return `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+};
+
+// generate tasks
 const createTasks = () => {
     const swimLanes = {
         todo: document.querySelectorAll(".swim-lane")[0],
@@ -43,9 +48,10 @@ const createTasks = () => {
 
     // creating the actual task
     tasks.forEach((task) => {
-        const taskElement = document.createElement("div");
-        taskElement.className = `task card`;
-        taskElement.draggable = true;
+        const newTask = document.createElement("div");
+        newTask.className = `task card`;
+        newTask.draggable = true;
+        newTask.dataset.id = task.id;
 
         let bgColor, hoverColor, activeColor;
         if (task.priority === 'P1') {
@@ -65,9 +71,9 @@ const createTasks = () => {
             pColor = "green-500";
         }
 
-        taskElement.classList.add(bgColor, hoverColor, activeColor);
+        newTask.classList.add(bgColor, hoverColor, activeColor);
 
-        taskElement.innerHTML = `
+        newTask.innerHTML = `
             <div class="flex justify-between items-center mb-4 p-2">
                 <span class="icon-[mage--edit] text-3xl text-greytwo cursor-pointer hover:bg-blue-500 transition-all"></span>
                 <p class="text-2xl text-greytwo font-mlight">${task.title}</p>
@@ -81,82 +87,17 @@ const createTasks = () => {
         // appending the correct status
         const taskLane = swimLanes[task.status];
         if (taskLane) {
-            taskLane.appendChild(taskElement);
+            taskLane.appendChild(newTask);
         } else {
             console.error("error");
         }
 
         // add drag class
-        addDragEventListeners(taskElement);
+        addDragEventListeners(newTask);
     });
 };
 
-// adding the drag
-const addDragEventListeners = (element) => {
-    element.addEventListener("dragstart", () => {
-        element.classList.add("is-dragging");
-    });
-    element.addEventListener("dragend", () => {
-        element.classList.remove("is-dragging");
-    });
-};
-
-// loading the tasks when loading
-document.addEventListener("DOMContentLoaded", createTasks);
-
-// apply button
-applyBtn.addEventListener("click", () => {
-    const title = formInputs.title.value;
-    const description = formInputs.description.value;
-    const date = formInputs.date.value;
-    const statusValue = formInputs.status.value;
-    const priority = formInputs.priority.value;
-
-    const newTask = {
-        title,
-        description,
-        date,
-        status: statusValue.toLowerCase(),
-        priority
-    };
-
-    tasks.push(newTask);
-
-    // save to localstorage
-    localStorage.setItem("test222", JSON.stringify(tasks));
-
-    // create
-    createTasks();
-
-    // clearinput
-    formInputs.title.value = '';
-    formInputs.description.value = '';
-    formInputs.date.value = '';
-    formInputs.status.value = 'todo';
-    formInputs.priority.value = 'P3';
-
-    // close display
-    addDisplay.classList.add("hidden");
-    addDisplay.classList.remove("flex");
-});
-
-//drag function
-taskContainers.forEach((container) => {
-    
-    container.addEventListener("dragover", (e) => {
-        e.preventDefault();
-
-        const bottomTask = insertAbove(container, e.clientY);
-        const currentTask = document.querySelector(".is-dragging");
-
-        if (!bottomTask) {
-            container.appendChild(currentTask);
-        } else {
-            container.insertBefore(currentTask, bottomTask);
-        }
-    });
-});
-
+//checking where to insert
 const insertAbove = (container, mouseY) => {
     const tasks = container.querySelectorAll(".task:not(.is-dragging)");
 
@@ -175,3 +116,97 @@ const insertAbove = (container, mouseY) => {
 
     return closestTask;
 };
+
+// adding the drag
+const addDragEventListeners = (element) => {
+    element.addEventListener("dragstart", () => {
+        element.classList.add("is-dragging");
+    });
+    element.addEventListener("dragend", () => {
+        element.classList.remove("is-dragging");
+    });
+};
+
+//drag function
+taskContainers.forEach((container) => {
+    container.addEventListener("dragover", (e) => {
+        e.preventDefault();
+
+        const bottomTask = insertAbove(container, e.clientY);
+        const currentTask = document.querySelector(".is-dragging");
+
+        if (!bottomTask) {
+            container.appendChild(currentTask);
+        } else {
+            container.insertBefore(currentTask, bottomTask);
+        }
+    });
+
+    container.addEventListener("drop", (e) => {
+        e.preventDefault();
+        const currentTask = document.querySelector(".is-dragging");
+        
+        if (currentTask) {
+            const newStatus = container.getAttribute("status");
+            
+            updateTaskStatus(currentTask, newStatus);
+        }
+    });
+});
+
+// apply button
+applyBtn.addEventListener("click", () => {
+    const title = formInputs.title.value;
+    const description = formInputs.description.value;
+    const date = formInputs.date.value;
+    const statusValue = formInputs.status.value;
+    const priority = formInputs.priority.value;
+
+    const newTask = {
+        id: genId(),
+        title,
+        description,
+        date,
+        status: statusValue.toLowerCase(),
+        priority
+    };
+
+    tasks.push(newTask);
+
+    // save to localstorage
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    // create
+    createTasks();
+
+    // clearinput
+    formInputs.title.value = '';
+    formInputs.description.value = '';
+    formInputs.date.value = '';
+    formInputs.status.value = 'todo';
+    formInputs.priority.value = 'P3';
+
+    // close display
+    addDisplay.classList.add("hidden");
+    addDisplay.classList.remove("flex");
+});
+
+//update status
+const updateTaskStatus = (taskObj, newStatus) => {
+    const taskId = taskObj.dataset.id;
+
+    const taskUpdate = tasks.find(task => task.id === taskId);
+    if (taskUpdate) {
+        //updating status
+        taskUpdate.status = newStatus.toLowerCase();
+        
+        //saving
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        
+        //visualizing change
+        createTasks();
+    }
+};
+
+// loading the tasks when loading
+document.addEventListener("DOMContentLoaded", createTasks);
