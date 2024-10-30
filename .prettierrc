@@ -1,5 +1,10 @@
 {
   "plugins": ["prettier-plugin-tailwindcss"],
-  "tabWidth": 10,
-  "useTabs": false
+  "tabWidth": 1,
+  "printWidth": 80,
+  "useTabs": true,
+  "quoteProps":"as-needed",
+  "bracketSameLine": true,
+  "arrowParens:": "always",
+  "htmlWhitespaceSensitivity": "css"
 }

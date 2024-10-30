@@ -1197,8 +1197,8 @@ video {
   font-weight: 500;
 }
 
-.text-greydark\/50 {
-  color: rgb(33 37 41 / 0.5);
+.text-black\/80 {
+  color: rgb(0 0 0 / 0.8);
 }
 
 .text-greytwo {
@@ -1209,6 +1209,18 @@ video {
 .text-whiteone {
   --tw-text-opacity: 1;
   color: rgb(206 212 218 / var(--tw-text-opacity));
+}
+
+.text-black\/40 {
+  color: rgb(0 0 0 / 0.4);
+}
+
+.text-black\/10 {
+  color: rgb(0 0 0 / 0.1);
+}
+
+.text-black\/30 {
+  color: rgb(0 0 0 / 0.3);
 }
 
 .shadow-2xl {
@@ -1335,9 +1347,8 @@ video {
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
-.hover\:text-gray-800:hover {
-  --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
+.hover\:text-black\/30:hover {
+  color: rgb(0 0 0 / 0.3);
 }
 
 .hover\:text-greyone:hover {
