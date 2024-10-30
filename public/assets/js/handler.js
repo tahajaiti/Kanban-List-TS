@@ -323,14 +323,14 @@ const sortTask = () => {
 
 				if (prio[taskA.priority] > prio[taskB.priority]) {
 					[tasks[j], tasks[j + 1]] = [tasks[j + 1], tasks[j]];
+
+					const dateA = new Date(taskA.date);
+					const dateB = new Date(taskB.date);
+
+					if (dateA > dateB) {
+						[tasks[j], tasks[j + 1]] = [tasks[j + 1], tasks[j]];
+					}
 				}
-
-                const dateA = new Date(taskA.date);
-                const dateB = new Date(taskB.date);
-
-                if(dateA > dateB){
-                    [tasks[j], tasks[j + 1]] = [tasks[j + 1], tasks[j]];
-                }
 			}
 		}
 	}
