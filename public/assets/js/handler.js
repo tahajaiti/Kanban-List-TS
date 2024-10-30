@@ -163,9 +163,9 @@ applyBtn.addEventListener("click", () => {
 	const statusValue = formInputs.status.value.trim();
 	const priority = formInputs.priority.value.trim();
 
-    let checkTitle = /^[a-zA-Z\s]*$/mg.test(title);
+	let checkTitle = /^[a-zA-Z\s]*$/gm.test(title);
 
-    console.log(checkTitle);
+	console.log(checkTitle);
 
 	if (!checkTitle || !date) {
 		alert("Please enter the a valid input.");
@@ -327,7 +327,8 @@ const sortTask = () => {
 
 				if (prio[taskA.priority] > prio[taskB.priority]) {
 					[tasks[j], tasks[j + 1]] = [tasks[j + 1], tasks[j]];
-
+                    
+				} else if (prio[taskA.priority] === prio[taskB.priority]) {
 					const dateA = new Date(taskA.date);
 					const dateB = new Date(taskB.date);
 
