@@ -1095,6 +1095,11 @@ video {
   background-color: rgba(73, 80, 87, 0.5);
 }
 
+.bg-greytwo {
+  --tw-bg-opacity: 1;
+  background-color: rgb(52 58 64 / var(--tw-bg-opacity));
+}
+
 .bg-orange-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(251 146 60 / var(--tw-bg-opacity));
@@ -1118,47 +1123,6 @@ video {
 .bg-yellowone {
   --tw-bg-opacity: 1;
   background-color: rgb(222 225 120 / var(--tw-bg-opacity));
-}
-
-.bg-greytwo {
-  --tw-bg-opacity: 1;
-  background-color: rgb(52 58 64 / var(--tw-bg-opacity));
-}
-
-.bg-\[url\(\)\] {
-  background-image: url();
-}
-
-.bg-\[url\(\'\'\)\] {
-  background-image: url('');
-}
-
-.bg-\[url\(\'\.\'\)\] {
-  background-image: url('.');
-}
-
-.bg-\[url\(\'assets\/images\/test\.png\'\)\] {
-  background-image: url('assets/images/test.png');
-}
-
-.bg-\[url\(\'assets\/images\/background\.png\'\)\] {
-  background-image: url('assets/images/background.png');
-}
-
-.bg-\[url\(\'assets\/images\/background\.jpng\'\)\] {
-  background-image: url('assets/images/background.jpng');
-}
-
-.bg-\[url\(\'assets\/images\/background\.jpg\'\)\] {
-  background-image: url('assets/images/background.jpg');
-}
-
-.bg-\[url\(\'assets\/images\/test\'\)\] {
-  background-image: url('assets/images/test');
-}
-
-.bg-cover {
-  background-size: cover;
 }
 
 .p-2 {
@@ -1267,10 +1231,6 @@ video {
 
 .drop-shadow-lg {
   --tw-drop-shadow: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 

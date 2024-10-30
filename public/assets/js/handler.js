@@ -8,6 +8,9 @@ const deleteBtn = document.querySelector("#deleteBtn");
 
 let displayedTaskId = null;
 
+// loading tasks from localstorage
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
 // input array
 const formInputs = {
     title: document.querySelector("input[name='title']"),
@@ -30,7 +33,7 @@ closeBtnAdd.addEventListener("click", () => {
     addDisplay.classList.add("hidden");
 });
 
-//generate id
+//generate unique id
 const genId = () => {
     return `${Date.now() - Math.floor(Math.random() * 1000)}`;
 };
@@ -105,6 +108,7 @@ const createTasks = () => {
         });
     });
 
+    sortTask();
     updateStats();
 };
 
@@ -224,6 +228,7 @@ const updateTaskStatus = (taskObj, newStatus) => {
 
         //update
         updateStats();
+        createTasks();
     }
 };
 
@@ -324,8 +329,27 @@ const deleteTask = (taskId) => {
     createTasks();
 };
 
-// loading tasks from localstorage
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+//sort
+const sortTask = () =>{
+    const prio = {P1:1, P2:2, P3: 3}; //order of priority P1 being the highest
+
+    if (tasks.length < 2) {
+        return;
+    } else {
+        for (let i = 0; i < tasks.length - 1; i++){
+            for (let j = 0; j < tasks.length - i - 1; j++){
+                const taskA = tasks[j];
+                const taskB = tasks[j+1];
+    
+                if (prio[taskA.priority] > prio[taskB.priority]){
+                    [tasks[j], tasks[j+1]] = [tasks[j+1], tasks[j]];
+                }
+            }
+        } 
+    }
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
 
 // loading the tasks when the html file is fully loaded
 document.addEventListener("DOMContentLoaded", createTasks);
