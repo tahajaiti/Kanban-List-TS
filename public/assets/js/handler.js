@@ -298,7 +298,7 @@ const addDisplayEvenetListeners = (task) => {
 const deleteTask = (taskId) => {
 	const taskIndex = tasks.findIndex((task) => task.id === taskId);
 
-	if (taskIndex !== -1) {
+	if (taskIndex > -1) {
 		tasks.splice(taskIndex, 1);
 	}
 
@@ -324,6 +324,13 @@ const sortTask = () => {
 				if (prio[taskA.priority] > prio[taskB.priority]) {
 					[tasks[j], tasks[j + 1]] = [tasks[j + 1], tasks[j]];
 				}
+
+                const dateA = new Date(taskA.date);
+                const dateB = new Date(taskB.date);
+
+                if(dateA > dateB){
+                    [tasks[j], tasks[j + 1]] = [tasks[j + 1], tasks[j]];
+                }
 			}
 		}
 	}
