@@ -43,7 +43,7 @@ const createTasks = () => {
     };
 
     // clear content before any appending
-    // Object.values(swimLanes).forEach(lane => lane.innerHTML = "");
+    Object.values(swimLanes).forEach(lane => lane.innerHTML = "");
 
     // creating the actual task
     tasks.forEach((task) => {
@@ -168,8 +168,8 @@ applyBtn.addEventListener("click", () => {
     const priority = formInputs.priority.value.trim();
 
     if (!title || !date ) {
-        alert("Please fill out all fields before submitting.");
-        return; // Stop further execution if validation fails
+        alert("Please enter the a valid input.");
+        return; // Return if its invalid stops it from further executing
     }
 
     const newTask = {
