@@ -98,6 +98,8 @@ const createTasks = () => {
         //add display on click
         addDisplayEvenetListeners(newTask);
     });
+
+    updateStats();
 };
 
 //checking where to insert
@@ -187,6 +189,9 @@ applyBtn.addEventListener("click", () => {
     // create
     createTasks();
 
+    //update
+    updateStats();
+
     // clearinput
     formInputs.title.value = '';
     formInputs.description.value = '';
@@ -211,9 +216,28 @@ const updateTaskStatus = (taskObj, newStatus) => {
         //saving
         localStorage.setItem("tasks", JSON.stringify(tasks));
         
-        //visualizing change
-        // createTasks();
+        //update
+        updateStats();
     }
+};
+
+//update count
+const updateStats = () => {
+    const swimLanes = {
+        todo: document.querySelectorAll(".swim-lane")[0],
+        doing: document.querySelectorAll(".swim-lane")[1],
+        done: document.querySelectorAll(".swim-lane")[2]
+    };
+
+    const counts = {
+        todo: swimLanes.todo.querySelectorAll(".task").length,
+        doing: swimLanes.doing.querySelectorAll(".task").length,
+        done: swimLanes.done.querySelectorAll(".task").length
+    };
+
+    document.querySelector("#todostat").textContent = counts.todo;
+    document.querySelector("#doingstat").textContent = counts.doing;
+    document.querySelector("#donestat").textContent = counts.done;
 };
 
 //display data
