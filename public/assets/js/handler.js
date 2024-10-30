@@ -2,11 +2,10 @@ const addBtn = document.querySelector("#addBtn");
 const addDisplay = document.querySelector("#addDisplay");
 const closeBtnAdd = document.querySelector("#closeBtnAdd");
 const applyBtn = document.querySelector("#applyBtn");
+const displayContainer = document.querySelector("#displayTask");
+const closeDisplayBtn = document.querySelector("#closeDisplayBtn");
 const allTasks = document.querySelectorAll(".task");
 const taskContainers = document.querySelectorAll(".swim-lane");
-
-// loading tasks from localstorage
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 // input array
 const formInputs = {
@@ -32,7 +31,7 @@ closeBtnAdd.addEventListener("click", () => {
 
 //generate id
 const genId = () => {
-    return `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    return `${Date.now()-Math.floor(Math.random() * 1000)}`;
 };
 
 // generate tasks
@@ -52,8 +51,10 @@ const createTasks = () => {
         newTask.className = `task card`;
         newTask.draggable = true;
         newTask.dataset.id = task.id;
+        newTask.dataset.description = task.description;
+        newTask.dataset.priority = task.priority;
 
-        let bgColor, hoverColor, activeColor;
+        let bgColor, hoverColor, activeColor, pColor;
         if (task.priority === 'P1') {
             bgColor = "bg-cardred";
             hoverColor = "hover:bg-cardredhov";
@@ -94,6 +95,8 @@ const createTasks = () => {
 
         // add drag class
         addDragEventListeners(newTask);
+        //add display on click
+        addDisplayEvenetListeners(newTask);
     });
 };
 
@@ -118,12 +121,12 @@ const insertAbove = (container, mouseY) => {
 };
 
 // adding the drag
-const addDragEventListeners = (element) => {
-    element.addEventListener("dragstart", () => {
-        element.classList.add("is-dragging");
+const addDragEventListeners = (task) => {
+    task.addEventListener("dragstart", () => {
+        task.classList.add("is-dragging");
     });
-    element.addEventListener("dragend", () => {
-        element.classList.remove("is-dragging");
+    task.addEventListener("dragend", () => {
+        task.classList.remove("is-dragging");
     });
 };
 
@@ -208,5 +211,48 @@ const updateTaskStatus = (taskObj, newStatus) => {
     }
 };
 
-// loading the tasks when loading
+//display data
+const addDisplayEvenetListeners = (task) => {
+    task.addEventListener("click", () => {
+        const taskTitle = task.querySelector("p").textContent;
+        const taskDate = task.querySelector(".left-tag").textContent;
+        const taskPriority = task.querySelector(".right-tag").textContent;
+        const taskDescription = task.dataset.description || "No description.";
+
+        let pColor;
+        if (task.dataset.priority === 'P1') {
+            pColor = "bg-red-500";
+        } else if (task.dataset.priority === 'P2') {
+            pColor = "bg-orange-400";
+        } else {
+            pColor = "bg-green-500";
+        }
+
+        displayContainer.querySelector(".text-2xl.text-greytwo.font-medium").textContent = taskTitle;
+        displayContainer.querySelector(".bg-greyone.text-whiteone").textContent = taskDescription;
+        displayContainer.querySelector(".left-tag").textContent = taskDate;
+        const rightTag = displayContainer.querySelector(".right-tag");
+        rightTag.textContent = taskPriority;
+        rightTag.className = `right-tag ${pColor}`;
+
+        displayContainer.classList.remove("hidden");
+        displayContainer.classList.add("flex");
+    });
+    closeDisplayBtn.addEventListener("click", () => {
+        displayContainer.classList.add("hidden");
+        displayContainer.classList.remove("flex");
+
+        displayContainer.querySelector(".text-2xl.text-greytwo.font-medium").textContent = "";
+        displayContainer.querySelector(".bg-greyone.text-whiteone").textContent = "";
+        displayContainer.querySelector(".left-tag").textContent = "";
+        const rightTag = displayContainer.querySelector(".right-tag");
+        rightTag.textContent = "";
+        rightTag.className = "right-tag"; 
+    });
+}
+
+// loading tasks from localstorage
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+// loading the tasks when the html file is fully loaded
 document.addEventListener("DOMContentLoaded", createTasks);
