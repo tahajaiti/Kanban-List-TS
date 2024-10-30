@@ -4,8 +4,7 @@ const closeBtnAdd = document.querySelector("#closeBtnAdd");
 const applyBtn = document.querySelector("#applyBtn");
 const displayContainer = document.querySelector("#displayTask");
 const closeDisplayBtn = document.querySelector("#closeDisplayBtn");
-const allTasks = document.querySelectorAll(".task");
-const taskContainers = document.querySelectorAll(".swim-lane");
+
 
 // input array
 const formInputs = {
@@ -133,7 +132,7 @@ const addDragEventListeners = (task) => {
 };
 
 //drag function
-taskContainers.forEach((container) => {
+document.querySelectorAll(".swim-lane").forEach((container) => {
     container.addEventListener("dragover", (e) => {
         e.preventDefault();
 
@@ -221,7 +220,7 @@ const updateTaskStatus = (taskObj, newStatus) => {
     }
 };
 
-//update count
+//update statistic
 const updateStats = () => {
     const swimLanes = {
         todo: document.querySelectorAll(".swim-lane")[0],
@@ -264,10 +263,12 @@ const addDisplayEvenetListeners = (task) => {
         rightTag.textContent = taskPriority;
         rightTag.className = `right-tag ${pColor}`;
 
+        displayContainer.classList.add("animate-[fadeIn_0.25s_ease-in-out_forwards]");
         displayContainer.classList.remove("hidden");
         displayContainer.classList.add("flex");
     });
     closeDisplayBtn.addEventListener("click", () => {
+        displayContainer.classList.remove("animate-[fadeIn_0.25s_ease-in-out_forwards]");
         displayContainer.classList.add("hidden");
         displayContainer.classList.remove("flex");
 

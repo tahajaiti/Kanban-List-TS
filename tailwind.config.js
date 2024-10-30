@@ -20,7 +20,7 @@ module.exports = {
         blueone: "#73CDE1",
         datecol: "#B4BFCF",
         cardred: "#FF8080",
-        cardredhov: "#FC8D8D",
+        cardredhov: "#FF9B9B",
         cardredactive: "#DD6F6F",
         cardorange: "#FFBF90",
         cardorangehov: "#FFD6B9",
