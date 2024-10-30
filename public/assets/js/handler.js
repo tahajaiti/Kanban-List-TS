@@ -43,7 +43,7 @@ const createTasks = () => {
     };
 
     // clear content before any appending
-    Object.values(swimLanes).forEach(lane => lane.innerHTML = "");
+    // Object.values(swimLanes).forEach(lane => lane.innerHTML = "");
 
     // creating the actual task
     tasks.forEach((task) => {
@@ -159,11 +159,16 @@ taskContainers.forEach((container) => {
 
 // apply button
 applyBtn.addEventListener("click", () => {
-    const title = formInputs.title.value;
-    const description = formInputs.description.value;
-    const date = formInputs.date.value;
-    const statusValue = formInputs.status.value;
-    const priority = formInputs.priority.value;
+    const title = formInputs.title.value.trim();
+    const description = formInputs.description.value.trim();
+    const date = formInputs.date.value.trim();
+    const statusValue = formInputs.status.value.trim();
+    const priority = formInputs.priority.value.trim();
+
+    if (!title || !date ) {
+        alert("Please fill out all fields before submitting.");
+        return; // Stop further execution if validation fails
+    }
 
     const newTask = {
         id: genId(),
@@ -207,7 +212,7 @@ const updateTaskStatus = (taskObj, newStatus) => {
         localStorage.setItem("tasks", JSON.stringify(tasks));
         
         //visualizing change
-        createTasks();
+        // createTasks();
     }
 };
 
