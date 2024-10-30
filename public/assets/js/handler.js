@@ -155,7 +155,7 @@ document.querySelectorAll(".swim-lane").forEach((container) => {
 	});
 });
 
-// apply button
+// apply button for adding a task
 applyBtn.addEventListener("click", () => {
 	const title = formInputs.title.value.trim();
 	const description = formInputs.description.value.trim();
@@ -163,9 +163,13 @@ applyBtn.addEventListener("click", () => {
 	const statusValue = formInputs.status.value.trim();
 	const priority = formInputs.priority.value.trim();
 
-	if (!title || !date) {
+    let checkTitle = /^[a-zA-Z\s]*$/mg.test(title);
+
+    console.log(checkTitle);
+
+	if (!checkTitle || !date) {
 		alert("Please enter the a valid input.");
-		return; // Return if its invalid stops it from further executing
+		return; // return if its invalid stops it from further executing
 	}
 
 	const newTask = {
