@@ -2,69 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
 
 @layer components {
-    .btn-primary {
-        @apply transition-all duration-200 hover:scale-105 hover:bg-whiteone hover:text-greyone cursor-pointer shadow-lg flex justify-start border w-[8rem] text-[1.2rem] font-medium text-whiteone bg-greyone rounded-full pl-2 active:scale-[0.98] active:bg-greytwo active:text-whitethree;
-    }
-    .left-tag{
-        @apply text-greyone w-1/2 h-full flex justify-center p-1 text-xl rounded-tr-[15px] rounded-bl-[15px];
-    }
-    .right-tag{
-        @apply text-greyone w-1/4 h-full flex justify-center p-1 text-xl rounded-tl-[15px] rounded-br-[15px];
-    }
-    .card{
-        @apply border rounded-[15px]  w-[95%] my-4 flex flex-col active:scale-[0.95] shadow-xl transition-all cursor-pointer;
-    }
-    .input-s{
-        @apply border bg-greyone text-whiteone h-fit w-full rounded-md p-2;
-    }
-    .is-dragging{
-        @apply scale-105 bg-whiteone shadow-2xl;
-    }
-
+	.btn-primary {
+		@apply flex w-[8rem] cursor-pointer justify-start rounded-full border bg-greyone pl-2 text-[1.2rem] font-medium text-whiteone shadow-lg transition-all duration-200 hover:scale-105 hover:bg-whiteone hover:text-greyone active:scale-[0.98] active:bg-greytwo active:text-whitethree;
+	}
+	.left-tag {
+		@apply flex h-full w-1/2 justify-center rounded-bl-[15px] rounded-tr-[15px] p-1 text-xl text-greyone;
+	}
+	.right-tag {
+		@apply flex h-full w-1/4 justify-center rounded-br-[15px] rounded-tl-[15px] p-1 text-xl text-greyone;
+	}
+	.card {
+		@apply my-4 flex w-[95%] cursor-pointer flex-col rounded-[15px] border shadow-xl transition-all active:scale-[0.95];
+	}
+	.input-s {
+		@apply h-fit w-full rounded-md border bg-greyone p-2 text-whiteone;
+	}
+	.is-dragging {
+		@apply scale-90 bg-whiteone opacity-50 shadow-2xl;
+	}
 }
 
-
 ::-webkit-scrollbar {
-    width: 10px;
+	width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #CED4DA;
-    border-bottom-right-radius: 15px;
-    border-right: 20px;
-    border-color: #212529;
+	background: #ced4da;
+	border-bottom-right-radius: 15px;
+	border-right: 20px;
+	border-color: #212529;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-bottom-right-radius: 15px;
+	background: #888;
+	border-bottom-right-radius: 15px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+	background: #555;
 }
 
 @keyframes fadeIn {
-   from{
-    opacity: 0;
-   }
-   to{
-    opacity: 1;
-   }
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 @keyframes fadeOut {
-    from{
-     opacity: 1;
-    }
-    to{
-     opacity: 0;
-    }
- }
-
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
