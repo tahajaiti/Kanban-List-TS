@@ -112,24 +112,10 @@ const createTasks = () => {
     updateStats();
 };
 
-//checking where to insert
-const insertAbove = (container, mouseY) => {
+//always inserting in the top
+const insertTop = (container) => {
     const tasks = container.querySelectorAll(".task:not(.is-dragging)");
-
-    let closestTask = null;
-    let closestOffset = Number.NEGATIVE_INFINITY;
-
-    tasks.forEach((task) => {
-        const { top } = task.getBoundingClientRect();
-        const offset = mouseY - top;
-
-        if (offset < 0 && offset > closestOffset) {
-            closestOffset = offset;
-            closestTask = task;
-        }
-    });
-
-    return closestTask;
+    return tasks.length > 0 ? tasks[0] : null;
 };
 
 // adding the drag
@@ -147,13 +133,14 @@ document.querySelectorAll(".swim-lane").forEach((container) => {
     container.addEventListener("dragover", (e) => {
         e.preventDefault();
 
-        const bottomTask = insertAbove(container, e.clientY);
+        const topTask = insertTop(container);
         const currentTask = document.querySelector(".is-dragging");
 
-        if (!bottomTask) {
+        if (!topTask) {
             container.appendChild(currentTask);
+            
         } else {
-            container.insertBefore(currentTask, bottomTask);
+            container.insertBefore(currentTask, topTask);
         }
     });
 
