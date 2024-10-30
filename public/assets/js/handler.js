@@ -4,7 +4,9 @@ const closeBtnAdd = document.querySelector("#closeBtnAdd");
 const applyBtn = document.querySelector("#applyBtn");
 const displayContainer = document.querySelector("#displayTask");
 const closeDisplayBtn = document.querySelector("#closeDisplayBtn");
+const deleteBtn = document.querySelector("#deleteBtn");
 
+let displayedTaskId = null;
 
 // input array
 const formInputs = {
@@ -12,7 +14,7 @@ const formInputs = {
     description: document.querySelector("input[name='dcrp']"),
     date: document.querySelector("input[name='date']"),
     status: document.querySelector("select[name='status']"),
-    priority: document.querySelector("select[name='priority']")
+    priority: document.querySelector("select[name='priority']"),
 };
 
 // close and open add display
@@ -30,7 +32,7 @@ closeBtnAdd.addEventListener("click", () => {
 
 //generate id
 const genId = () => {
-    return `${Date.now()-Math.floor(Math.random() * 1000)}`;
+    return `${Date.now() - Math.floor(Math.random() * 1000)}`;
 };
 
 // generate tasks
@@ -38,11 +40,11 @@ const createTasks = () => {
     const swimLanes = {
         todo: document.querySelectorAll(".swim-lane")[0],
         doing: document.querySelectorAll(".swim-lane")[1],
-        done: document.querySelectorAll(".swim-lane")[2]
+        done: document.querySelectorAll(".swim-lane")[2],
     };
 
     // clear content before any appending
-    Object.values(swimLanes).forEach(lane => lane.innerHTML = "");
+    Object.values(swimLanes).forEach((lane) => (lane.innerHTML = ""));
 
     // creating the actual task
     tasks.forEach((task) => {
@@ -54,12 +56,12 @@ const createTasks = () => {
         newTask.dataset.priority = task.priority;
 
         let bgColor, hoverColor, activeColor, pColor;
-        if (task.priority === 'P1') {
+        if (task.priority === "P1") {
             bgColor = "bg-cardred";
             hoverColor = "hover:bg-cardredhov";
             activeColor = "active:bg-cardredactive";
             pColor = "red-500";
-        } else if (task.priority === 'P2') {
+        } else if (task.priority === "P2") {
             bgColor = "bg-cardorange";
             hoverColor = "hover:bg-cardorangehov";
             activeColor = "active:bg-cardorangeactive";
@@ -77,7 +79,7 @@ const createTasks = () => {
             <div class="flex justify-between items-center mb-4 p-2">
                 <span class="icon-[mage--edit] text-3xl text-greytwo cursor-pointer hover:bg-blue-500 transition-all"></span>
                 <p class="text-2xl text-greytwo font-mlight">${task.title}</p>
-                <span class="icon-[mage--trash] text-3xl text-greytwo hover:bg-red-500 transition-all"></span>
+                <span class="icon-[mage--trash] text-3xl text-greytwo hover:bg-red-500 transition-all" id="deleteBtn"></span>
             </div>
             <div class="flex justify-between content-baseline">
                 <div class="bg-blue-200 left-tag">${task.date}</div>
@@ -96,6 +98,11 @@ const createTasks = () => {
         addDragEventListeners(newTask);
         //add display on click
         addDisplayEvenetListeners(newTask);
+        //calling the function
+        newTask.querySelector("#deleteBtn").addEventListener("click", (e) => {
+            e.stopPropagation();
+            deleteTask(task.id);
+        });
     });
 
     updateStats();
@@ -149,10 +156,10 @@ document.querySelectorAll(".swim-lane").forEach((container) => {
     container.addEventListener("drop", (e) => {
         e.preventDefault();
         const currentTask = document.querySelector(".is-dragging");
-        
+
         if (currentTask) {
             const newStatus = container.getAttribute("status");
-            
+
             updateTaskStatus(currentTask, newStatus);
         }
     });
@@ -166,7 +173,7 @@ applyBtn.addEventListener("click", () => {
     const statusValue = formInputs.status.value.trim();
     const priority = formInputs.priority.value.trim();
 
-    if (!title || !date ) {
+    if (!title || !date) {
         alert("Please enter the a valid input.");
         return; // Return if its invalid stops it from further executing
     }
@@ -177,7 +184,7 @@ applyBtn.addEventListener("click", () => {
         description,
         date,
         status: statusValue.toLowerCase(),
-        priority
+        priority,
     };
 
     tasks.push(newTask);
@@ -192,11 +199,11 @@ applyBtn.addEventListener("click", () => {
     updateStats();
 
     // clearinput
-    formInputs.title.value = '';
-    formInputs.description.value = '';
-    formInputs.date.value = '';
-    formInputs.status.value = 'todo';
-    formInputs.priority.value = 'P3';
+    formInputs.title.value = "";
+    formInputs.description.value = "";
+    formInputs.date.value = "";
+    formInputs.status.value = "todo";
+    formInputs.priority.value = "P3";
 
     // close display
     addDisplay.classList.add("hidden");
@@ -207,14 +214,14 @@ applyBtn.addEventListener("click", () => {
 const updateTaskStatus = (taskObj, newStatus) => {
     const taskId = taskObj.dataset.id;
 
-    const taskUpdate = tasks.find(task => task.id === taskId);
+    const taskUpdate = tasks.find((task) => task.id === taskId);
     if (taskUpdate) {
         //updating status
         taskUpdate.status = newStatus.toLowerCase();
-        
+
         //saving
         localStorage.setItem("tasks", JSON.stringify(tasks));
-        
+
         //update
         updateStats();
     }
@@ -225,13 +232,13 @@ const updateStats = () => {
     const swimLanes = {
         todo: document.querySelectorAll(".swim-lane")[0],
         doing: document.querySelectorAll(".swim-lane")[1],
-        done: document.querySelectorAll(".swim-lane")[2]
+        done: document.querySelectorAll(".swim-lane")[2],
     };
 
     const counts = {
         todo: swimLanes.todo.querySelectorAll(".task").length,
         doing: swimLanes.doing.querySelectorAll(".task").length,
-        done: swimLanes.done.querySelectorAll(".task").length
+        done: swimLanes.done.querySelectorAll(".task").length,
     };
 
     document.querySelector("#todostat").textContent = counts.todo;
@@ -247,39 +254,75 @@ const addDisplayEvenetListeners = (task) => {
         const taskPriority = task.querySelector(".right-tag").textContent;
         const taskDescription = task.dataset.description || "No description.";
 
+        displayedTaskId = task.dataset.id;
+
         let pColor;
-        if (task.dataset.priority === 'P1') {
+        if (task.dataset.priority === "P1") {
             pColor = "bg-red-500";
-        } else if (task.dataset.priority === 'P2') {
+        } else if (task.dataset.priority === "P2") {
             pColor = "bg-orange-400";
         } else {
             pColor = "bg-green-500";
         }
 
-        displayContainer.querySelector(".text-2xl.text-greytwo.font-medium").textContent = taskTitle;
-        displayContainer.querySelector(".bg-greyone.text-whiteone").textContent = taskDescription;
+        displayContainer.querySelector(
+            "#titleContainer",
+        ).textContent = taskTitle;
+        displayContainer.querySelector(
+            "#descContainer",
+        ).textContent = taskDescription;
         displayContainer.querySelector(".left-tag").textContent = taskDate;
         const rightTag = displayContainer.querySelector(".right-tag");
         rightTag.textContent = taskPriority;
         rightTag.className = `right-tag ${pColor}`;
 
-        displayContainer.classList.add("animate-[fadeIn_0.25s_ease-in-out_forwards]");
+        displayContainer.classList.add(
+            "animate-[fadeIn_0.25s_ease-in-out_forwards]",
+        );
         displayContainer.classList.remove("hidden");
         displayContainer.classList.add("flex");
     });
     closeDisplayBtn.addEventListener("click", () => {
-        displayContainer.classList.remove("animate-[fadeIn_0.25s_ease-in-out_forwards]");
+        displayContainer.classList.remove(
+            "animate-[fadeIn_0.25s_ease-in-out_forwards]",
+        );
         displayContainer.classList.add("hidden");
         displayContainer.classList.remove("flex");
 
-        displayContainer.querySelector(".text-2xl.text-greytwo.font-medium").textContent = "";
-        displayContainer.querySelector(".bg-greyone.text-whiteone").textContent = "";
+        displayContainer.querySelector(
+            "#titleContainer",
+        ).textContent = "";
+        displayContainer.querySelector(
+            "#descContainer",
+        ).textContent = "";
         displayContainer.querySelector(".left-tag").textContent = "";
         const rightTag = displayContainer.querySelector(".right-tag");
         rightTag.textContent = "";
-        rightTag.className = "right-tag"; 
+        rightTag.className = "right-tag";
+
+        displayedTaskId = null;
     });
-}
+
+    deleteBtn.addEventListener("click", () => {
+        if (displayedTaskId) {
+            deleteTask(displayedTaskId);
+            displayedTaskId = null;
+            displayContainer.classList.add("hidden");
+        }
+    });
+};
+
+//delete task
+const deleteTask = (taskId) => {
+    const taskIndex = tasks.findIndex((task) => task.id === taskId);
+    tasks.splice(taskIndex, 1);
+
+    // updating the local storage
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    // generating the tasks to accomodate the delete
+    createTasks();
+};
 
 // loading tasks from localstorage
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];

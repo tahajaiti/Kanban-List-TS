@@ -23,7 +23,9 @@
     .is-dragging{
         @apply scale-105 bg-whiteone shadow-2xl;
     }
+
 }
+
 
 ::-webkit-scrollbar {
     width: 10px;

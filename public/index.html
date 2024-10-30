@@ -27,8 +27,7 @@
 
 
       <!-- Section container -->
-      <div
-        class="flex justify-between gap-6 xl:px-10 2xl:gap-4 w-screen overflow-x-auto 2xl:overflow-hidden">
+      <div class="flex justify-between gap-6 xl:px-10 2xl:gap-4 w-screen overflow-x-auto 2xl:overflow-hidden">
         <!-- TODO SECTION -->
         <div class="xl:w-[30rem] w-screen border-2 rounded-[15px] shadow-xl">
           <!-- HEADER -->
@@ -47,7 +46,8 @@
 
           <!-- CONTAINER -->
           <div
-            class="swim-lane bg-purple-400/50 flex flex-col items-center w-full h-[30rem] overflow-y-scroll  rounded-br-[15px] rounded-bl-[15px]" status="todo">
+            class="swim-lane bg-greyoneop flex flex-col items-center w-full h-[30rem] overflow-y-scroll  rounded-br-[15px] rounded-bl-[15px]"
+            status="todo">
             <!-- CARDS -->
             <!-- <div draggable="true" class="task bg-greenone hover:bg-cardredhov active:bg-cardredactive card">
               <div class="flex justify-between items-center mb-4 p-2">
@@ -87,8 +87,9 @@
 
           <!-- CONTAINER -->
           <div
-            class="swim-lane bg-greyoneop flex flex-col items-center w-full h-[30rem] overflow-y-scroll  rounded-br-[15px] rounded-bl-[15px]" status="doing">
-            
+            class="swim-lane bg-greyoneop flex flex-col items-center w-full h-[30rem] overflow-y-scroll  rounded-br-[15px] rounded-bl-[15px]"
+            status="doing">
+
           </div>
           <!--  -->
         </div>
@@ -96,7 +97,7 @@
 
 
         <!-- DONE SECTION -->
-        <div class="xl:w-[30rem] w-screen border-2 rounded-[15px] shadow-xl" >
+        <div class="xl:w-[30rem] w-screen border-2 rounded-[15px] shadow-xl">
           <!-- HEADER -->
           <header>
             <div class="flex justify-between bg-whiteone w-full p-3 rounded-tr-[15px] rounded-tl-[15px] shadow-2xl">
@@ -113,9 +114,10 @@
 
           <!-- CONTAINER -->
           <div
-            class="swim-lane bg-greyoneop flex flex-col items-center drop-shadow-lg w-full h-[30rem] overflow-y-scroll  rounded-br-[15px] rounded-bl-[15px]" status="done">
+            class="swim-lane bg-greyoneop flex flex-col items-center drop-shadow-lg w-full h-[30rem] overflow-y-scroll  rounded-br-[15px] rounded-bl-[15px]"
+            status="done">
             <!-- CARDS -->
-            
+
 
           </div>
           <!--  -->
@@ -127,19 +129,22 @@
     </section>
 
     <!-- FULL DISPLAY-->
-    <section class="hidden h-screen w-screen bg-greyoneop justify-center items-center backdrop-blur-xl absolute top-0 z-10" id="displayTask">
+    <section
+      class="hidden h-screen w-screen bg-greyoneop justify-center items-center backdrop-blur-xl absolute top-0 z-10"
+      id="displayTask">
       <!-- MAIN CONTAINER -->
       <div
         class="lg:w-1/2 lg:h-1/2 w-full h-2/3 bg-whiteone gap-4 rounded-[15px] pt-3 px-3 flex flex-col justify-evenly">
         <div class="flex justify-between">
           <span
-            class="icon-[mage--trash] text-4xl text-greytwo hover:bg-red-500 hover:scale-105 active:scale-95 active:bg-red-600 cursor-pointer transition-all"></span>
-          <div class="text-2xl text-greytwo font-medium w-[35rem] text-center mr-[1.6rem]">
+            class="icon-[mage--trash] text-4xl text-greytwo hover:bg-red-500 hover:scale-105 active:scale-95 active:bg-red-600 cursor-pointer transition-all"
+            id="deleteBtn"></span>
+          <div class="text-2xl text-greytwo font-medium w-[35rem] text-center mr-[1.6rem]" id="titleContainer">
             TITLE
           </div>
           <span class="icon-[mdi--close] text-4xl text-greytwo cursor-pointer" id="closeDisplayBtn"></span>
         </div>
-        <div class="bg-greyone text-whiteone text-xl mt-6 p-4 w-full h-2/3 shadow-inner rounded-[15px] overflow-auto ">
+        <div class="bg-greyone text-whiteone text-xl mt-6 p-4 w-full h-2/3 shadow-inner rounded-[15px] overflow-auto " id="descContainer">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum molestias repellat, veritatis eius
           temporibus quod veniam laboriosam tenetur unde praesentium! Esse, dolorem laudantium fugiat quas laboriosam
         </div>
