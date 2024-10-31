@@ -225,7 +225,6 @@ applyBtn.addEventListener("click", () => {
 	// }
 
 	const formContainer = document.querySelectorAll(".formReal");
-	console.log(formContainer);
 
 	formContainer.forEach((form) => {
 		const title = form.querySelector("#nameInput");
@@ -235,8 +234,6 @@ applyBtn.addEventListener("click", () => {
 		const priority = form.querySelector("#prioInput");
 
 		let checkTitle = /^[a-zA-Z\s]*$/gm.test(title.value);
-
-		console.log(checkTitle);
 
 		if (!checkTitle || !date.value) {
 			alert("Please enter the a valid input.");
@@ -265,6 +262,8 @@ applyBtn.addEventListener("click", () => {
 
 		if (form.id !== "add1"){
 			form.remove();
+			addCounter--;
+			console.log(addCounter);
 		}
 	});
 
