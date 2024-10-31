@@ -83,7 +83,15 @@ multiBtn.addEventListener("click", () => {
 
 //remove one multiple add form
 removeBtn.addEventListener("click", ()=>{
-
+	if (addCounter === 1){
+		alert("Cant go under one form");
+		return;
+	} else {
+		const formDelete = document.getElementById(`add${addCounter}`);
+		console.log(formDelete);
+		formDelete.remove();
+		addCounter--;
+	}
 });
 
 //generate unique id
