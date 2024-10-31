@@ -4,8 +4,7 @@
 <head>
   <meta name="description"
     content="Task Flow is a simple and intuitive Kanban-style task management application that helps you organize your tasks and boost your productivity.">
-  <meta name="keywords"
-    content="task management, kanban board, productivity, task tracker, Task Flow, to-do list, project management,
+  <meta name="keywords" content="task management, kanban board, productivity, task tracker, Task Flow, to-do list, project management,
      workflow organization, task prioritization, drag and drop tasks">
   <meta name="author" content="Taha Jaiti">
   <meta charset="UTF-8" />
@@ -24,11 +23,13 @@
       <h1 class="text-4xl text-whiteone">TASKFLOW</h1>
     </div>
     <!-- Add Button -->
-    <span id="addBtn" class="icon-[icon-park-solid--add] text-5xl text-whiteone hover:text-white hover:scale-110 active:text-whiteone/50 active:scale-95 transition-all"></span>
+    <span id="addBtn" class="icon-[icon-park-solid--add] cursor-pointer text-5xl text-whiteone 
+    hover:text-white hover:scale-110 active:text-whiteone/50 active:scale-95 transition-all"></span>
     <!--  -->
   </header>
   <!--  -->
 
+  <!-- MAIN -->
   <main class="mt-20 w-full h-fit">
 
     <!-- SWIMLANES SECTION -->
@@ -167,14 +168,16 @@
 
     <!-- FULL ADD -->
     <section id="addDisplay"
-      class="hidden h-screen w-screen bg-greyoneop justify-center items-center backdrop-blur-xl absolute top-0 z-10">
+      class="flex h-screen w-screen bg-greyoneop justify-center items-center backdrop-blur-xl absolute top-0 z-10">
       <!-- MAIN CONTAINER -->
       <div
         class="lg:w-fit lg:h-fit w-screen h-screen bg-whiteone gap-4 rounded-[15px] pt-3 px-3 flex flex-col border border-greydark">
         <!--  -->
         <div class="flex justify-between items-center">
-          <span
+          <span id="addForm"
             class="icon-[ic--round-add] text-5xl text-center text-greytwo hover:text-greyone hover:scale-110 active:scale-95 active:text-greydark cursor-pointer transition-all"></span>
+          <span id="removeForm"
+            class="icon-[ic--round-remove] text-5xl text-center text-greytwo hover:text-greyone hover:scale-110 active:scale-95 active:text-greydark cursor-pointer transition-all"></span>
           <div class="text-2xl text-greytwo font-medium w-[35rem] text-center m-auto">
             NEW TASK
           </div>
@@ -184,35 +187,36 @@
         <!--  -->
 
         <!-- FORM -->
-        <div
-          class=" flex flex-row items-center mb-3 flex-wrap gap-2 bg-slate-400 p-2 rounded-md border border-greydark shadow-xl">
-          <div>
-            <label for="title" class="text-2xl text-greytwo">Title</label>
-            <input type="text" name="title" class="input-s">
-          </div>
-          <div>
-            <label for="dcrp" class="text-2xl text-greytwo">Description</label>
-            <input type="text" name="dcrp" class="input-s max-w-xl">
-          </div>
-          <div>
-            <label for="date" class="text-2xl text-greytwo">Date</label>
-            <input type="date" name="date" class="input-s" min="2020-01-01">
-          </div>
-          <div>
-            <label for="status" class="text-2xl text-greytwo">Status</label>
-            <select name="status" id="" class="input-s">
-              <option value="todo">To Do</option>
-              <option value="doing">Doing</option>
-              <option value="done">Done</option>
-            </select>
-          </div>
-          <div>
-            <label for="priority" class="text-2xl text-greytwo">Priority</label>
-            <select name="priority" id="" class="input-s">
-              <option value="P3">P3</option>
-              <option value="P2">P2</option>
-              <option value="P1">P1</option>
-            </select>
+        <div id="formContainer">
+          <div class="addForm">
+            <div>
+              <label for="title" class="text-2xl text-greytwo">Title</label>
+              <input type="text" name="title" class="input-s">
+            </div>
+            <div>
+              <label for="dcrp" class="text-2xl text-greytwo">Description</label>
+              <input type="text" name="dcrp" class="input-s max-w-xl">
+            </div>
+            <div>
+              <label for="date" class="text-2xl text-greytwo">Date</label>
+              <input type="date" name="date" class="input-s" min="2020-01-01">
+            </div>
+            <div>
+              <label for="status" class="text-2xl text-greytwo">Status</label>
+              <select name="status" id="" class="input-s">
+                <option value="todo">To Do</option>
+                <option value="doing">Doing</option>
+                <option value="done">Done</option>
+              </select>
+            </div>
+            <div>
+              <label for="priority" class="text-2xl text-greytwo">Priority</label>
+              <select name="priority" id="" class="input-s">
+                <option value="P3">P3</option>
+                <option value="P2">P2</option>
+                <option value="P1">P1</option>
+              </select>
+            </div>
           </div>
         </div>
         <!--  -->

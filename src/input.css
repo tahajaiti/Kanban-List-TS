@@ -23,6 +23,9 @@
 	.is-dragging {
 		@apply scale-90 bg-whiteone opacity-50 shadow-2xl;
 	}
+	.addForm{
+		@apply flex flex-row items-center mb-3 flex-wrap gap-2 bg-slate-400 p-2 rounded-md border border-greydark shadow-xl;
+	}
 }
 
 ::-webkit-scrollbar {

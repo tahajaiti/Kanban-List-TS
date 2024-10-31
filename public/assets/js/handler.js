@@ -5,8 +5,11 @@ const applyBtn = document.querySelector("#applyBtn");
 const displayContainer = document.querySelector("#displayTask");
 const closeDisplayBtn = document.querySelector("#closeDisplayBtn");
 const deleteBtn = document.querySelector("#deleteBtn");
+const multiBtn = document.querySelector("#addForm");
+const removeBtn = document.querySelector("#removeForm");
 
 let displayedTaskId = null;
+let addCounter = 1;
 
 // loading tasks from localstorage
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
@@ -31,6 +34,56 @@ closeBtnAdd.addEventListener("click", () => {
 	addDisplay.classList.remove("animate-[fadeIn_0.25s_ease-in-out-forwards]");
 	addDisplay.classList.remove("flex");
 	addDisplay.classList.add("hidden");
+});
+
+//mutliple add form
+multiBtn.addEventListener("click", () => {
+	if (addCounter >= 5) {
+		alert("Max forms");
+		return;
+	} else {
+		addCounter++;
+		const formContainer = document.querySelector("#formContainer");
+		const newForm = document.createElement("div");
+		newForm.className = `addForm`;
+		newForm.id = `add${addCounter}`;
+		newForm.innerHTML = `
+		<div>
+            <label for="title" class="text-2xl text-greytwo">Title</label>
+            <input type="text" name="title" class="input-s">
+          </div>
+          <div>
+            <label for="dcrp" class="text-2xl text-greytwo">Description</label>
+            <input type="text" name="dcrp" class="input-s max-w-xl">
+          </div>
+          <div>
+            <label for="date" class="text-2xl text-greytwo">Date</label>
+            <input type="date" name="date" class="input-s" min="2020-01-01">
+          </div>
+          <div>
+            <label for="status" class="text-2xl text-greytwo">Status</label>
+            <select name="status" id="" class="input-s">
+              <option value="todo">To Do</option>
+              <option value="doing">Doing</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+          <div>
+            <label for="priority" class="text-2xl text-greytwo">Priority</label>
+            <select name="priority" id="" class="input-s">
+              <option value="P3">P3</option>
+              <option value="P2">P2</option>
+              <option value="P1">P1</option>
+            </select>
+          </div>`;
+
+		formContainer.appendChild(newForm);
+	}
+});
+
+//remove one multiple add form
+removeBtn.addEventListener("click", ()=>{
+
 });
 
 //generate unique id
@@ -330,7 +383,6 @@ const sortTask = () => {
 
 				if (prio[taskA.priority] > prio[taskB.priority]) {
 					[tasks[j], tasks[j + 1]] = [tasks[j + 1], tasks[j]];
-                    
 				} else if (prio[taskA.priority] === prio[taskB.priority]) {
 					const dateA = new Date(taskA.date);
 					const dateB = new Date(taskB.date);
@@ -341,6 +393,7 @@ const sortTask = () => {
 				}
 			}
 		}
+		console.log("sorted");
 	}
 
 	localStorage.setItem("tasks", JSON.stringify(tasks));
