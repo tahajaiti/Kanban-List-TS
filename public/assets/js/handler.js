@@ -38,7 +38,7 @@ closeBtnAdd.addEventListener("click", () => {
 
 //mutliple add form
 multiBtn.addEventListener("click", () => {
-	if (addCounter >= 5) {
+	if (addCounter >= 4) {
 		alert("Max forms");
 		return;
 	} else {
