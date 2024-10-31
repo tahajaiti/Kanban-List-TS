@@ -14,15 +14,6 @@ let addCounter = 1;
 // loading tasks from localstorage
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-// input array
-const formInputs = {
-	title: document.querySelector("input[name='title']"),
-	description: document.querySelector("input[name='dcrp']"),
-	date: document.querySelector("input[name='date']"),
-	status: document.querySelector("select[name='status']"),
-	priority: document.querySelector("select[name='priority']"),
-};
-
 // close and open add display
 addBtn.addEventListener("click", () => {
 	addDisplay.classList.add("flex");
@@ -38,52 +29,52 @@ closeBtnAdd.addEventListener("click", () => {
 
 //mutliple add form
 multiBtn.addEventListener("click", () => {
-	if (addCounter >= 4) {
+	if (addCounter >= 5) {
 		alert("Max forms");
 		return;
 	} else {
+		const formContainer = document.querySelector("#formsContainer");
 		addCounter++;
-		const formContainer = document.querySelector("#formContainer");
 		const newForm = document.createElement("div");
-		newForm.className = `addForm`;
+		newForm.className = `addForm formReal`;
 		newForm.id = `add${addCounter}`;
 		newForm.innerHTML = `
 		<div>
-            <label for="title" class="text-2xl text-greytwo">Title</label>
-            <input type="text" name="title" class="input-s">
-          </div>
-          <div>
-            <label for="dcrp" class="text-2xl text-greytwo">Description</label>
-            <input type="text" name="dcrp" class="input-s max-w-xl">
-          </div>
-          <div>
-            <label for="date" class="text-2xl text-greytwo">Date</label>
-            <input type="date" name="date" class="input-s" min="2020-01-01">
-          </div>
-          <div>
-            <label for="status" class="text-2xl text-greytwo">Status</label>
-            <select name="status" id="" class="input-s">
-              <option value="todo">To Do</option>
-              <option value="doing">Doing</option>
-              <option value="done">Done</option>
-            </select>
-          </div>
-          <div>
-            <label for="priority" class="text-2xl text-greytwo">Priority</label>
-            <select name="priority" id="" class="input-s">
-              <option value="P3">P3</option>
-              <option value="P2">P2</option>
-              <option value="P1">P1</option>
-            </select>
-          </div>`;
+              <label for="title" class="text-2xl text-greytwo">Title</label>
+              <input type="text" name="title" class="input-s formInput" id="nameInput">
+            </div>
+            <div>
+              <label for="dcrp" class="text-2xl text-greytwo">Description</label>
+              <input type="text" name="dcrp" class="input-s max-w-xl formInput" id="dcrpInput">
+            </div>
+            <div>
+              <label for="date" class="text-2xl text-greytwo">Date</label>
+              <input type="date" name="date" class="input-s formInput" min="2020-01-01" id="dateInput">
+            </div>
+            <div>
+              <label for="status" class="text-2xl text-greytwo">Status</label>
+              <select name="status" class="input-s formInput" id="statusInput">
+                <option value="todo">To Do</option>
+                <option value="doing">Doing</option>
+                <option value="done">Done</option>
+              </select>
+            </div>
+            <div>
+              <label for="priority" class="text-2xl text-greytwo">Priority</label>
+              <select name="priority" class="input-s formInput" id="prioInput">
+                <option value="P3">P3</option>
+                <option value="P2">P2</option>
+                <option value="P1">P1</option>
+              </select>
+            </div>`;
 
 		formContainer.appendChild(newForm);
 	}
 });
 
 //remove one multiple add form
-removeBtn.addEventListener("click", ()=>{
-	if (addCounter === 1){
+removeBtn.addEventListener("click", () => {
+	if (addCounter === 1) {
 		alert("Cant go under one form");
 		return;
 	} else {
@@ -218,35 +209,65 @@ document.querySelectorAll(".swim-lane").forEach((container) => {
 
 // apply button for adding a task
 applyBtn.addEventListener("click", () => {
-	const title = formInputs.title.value.trim();
-	const description = formInputs.description.value.trim();
-	const date = formInputs.date.value.trim();
-	const statusValue = formInputs.status.value.trim();
-	const priority = formInputs.priority.value.trim();
+	// const title = formInputs.title.value.trim();
+	// const description = formInputs.description.value.trim();
+	// const date = formInputs.date.value.trim();
+	// const statusValue = formInputs.status.value.trim();
+	// const priority = formInputs.priority.value.trim();
 
-	let checkTitle = /^[a-zA-Z\s]*$/gm.test(title);
+	// let checkTitle = /^[a-zA-Z\s]*$/gm.test(title);
 
-	console.log(checkTitle);
+	// console.log(checkTitle);
 
-	if (!checkTitle || !date) {
-		alert("Please enter the a valid input.");
-		return; // return if its invalid stops it from further executing
-	}
+	// if (!checkTitle || !date) {
+	// 	alert("Please enter the a valid input.");
+	// 	return; // return if its invalid stops it from further executing
+	// }
 
-	const newTask = {
-		id: genId(),
-		title,
-		description,
-		date,
-		status: statusValue.toLowerCase(),
-		priority,
-	};
+	const formContainer = document.querySelectorAll(".formReal");
 
-	tasks.push(newTask);
+	formContainer.forEach((form) => {
+		const title = form.querySelector("#nameInput");
+		const description = form.querySelector("#dcrpInput");
+		const date = form.querySelector("#dateInput");
+		const statusValue = form.querySelector("#statusInput");
+		const priority = form.querySelector("#prioInput");
 
-	// save to localstorage
-	localStorage.setItem("tasks", JSON.stringify(tasks));
+		let checkTitle = /^[a-zA-Z\s]*$/gm.test(title.value);
 
+		if (!checkTitle || !date.value) {
+			alert("Please enter the a valid input.");
+			return; // return if its invalid stops it from further executing
+		}
+
+		const newTask = {
+			id: genId(),
+			title: title.value.trim(),
+			description: description.value.trim(),
+			date: date.value.trim(),
+			status: statusValue.value.toLowerCase(),
+			priority: priority.value,
+		};
+
+		tasks.push(newTask);
+
+		// save to localstorage
+		localStorage.setItem("tasks", JSON.stringify(tasks));
+
+		title.value = "";
+		description.value ="";
+		date.value = "";
+		statusValue.value = "";
+		priority.value = "";
+
+		if (form.id !== "add1"){
+			form.remove();
+			addCounter--;
+			console.log(addCounter);
+		}
+	});
+
+	
 	//sort
 	sortTask();
 
@@ -255,13 +276,6 @@ applyBtn.addEventListener("click", () => {
 
 	//update
 	updateStats();
-
-	// clearinput
-	formInputs.title.value = "";
-	formInputs.description.value = "";
-	formInputs.date.value = "";
-	formInputs.status.value = "todo";
-	formInputs.priority.value = "P3";
 
 	// close display
 	addDisplay.classList.add("hidden");

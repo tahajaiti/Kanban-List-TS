@@ -168,10 +168,10 @@
 
     <!-- FULL ADD -->
     <section id="addDisplay"
-      class="flex h-screen w-screen bg-greyoneop justify-center items-center backdrop-blur-xl absolute top-0 z-10">
+      class="hidden sm:h-screen h-screen w-screen bg-greyoneop justify-center items-center backdrop-blur-xl absolute top-0 z-10">
       <!-- MAIN CONTAINER -->
       <div
-        class="lg:w-fit lg:h-fit w-screen h-screen bg-whiteone gap-4 rounded-[15px] pt-3 px-3 flex flex-col border border-greydark">
+        class="lg:w-fit lg:h-fit w-screen h-full bg-whiteone gap-4 rounded-[15px] pt-3 px-3 flex flex-col border border-greydark overflow-y-auto">
         <!--  -->
         <div class="flex justify-between items-center">
           <span id="addForm"
@@ -187,23 +187,23 @@
         <!--  -->
 
         <!-- FORM -->
-        <div id="formContainer">
-          <div class="addForm" id="add1">
+        <div id="formsContainer">
+          <div class="addForm formReal" id="add1">
             <div>
               <label for="title" class="text-2xl text-greytwo">Title</label>
-              <input type="text" name="title" class="input-s">
+              <input type="text" name="title" class="input-s formInput" id="nameInput">
             </div>
             <div>
               <label for="dcrp" class="text-2xl text-greytwo">Description</label>
-              <input type="text" name="dcrp" class="input-s max-w-xl">
+              <input type="text" name="dcrp" class="input-s max-w-xl formInput" id="dcrpInput">
             </div>
             <div>
               <label for="date" class="text-2xl text-greytwo">Date</label>
-              <input type="date" name="date" class="input-s" min="2020-01-01">
+              <input type="date" name="date" class="input-s formInput" min="2020-01-01" id="dateInput">
             </div>
             <div>
               <label for="status" class="text-2xl text-greytwo">Status</label>
-              <select name="status" id="" class="input-s">
+              <select name="status" class="input-s formInput" id="statusInput">
                 <option value="todo">To Do</option>
                 <option value="doing">Doing</option>
                 <option value="done">Done</option>
@@ -211,7 +211,7 @@
             </div>
             <div>
               <label for="priority" class="text-2xl text-greytwo">Priority</label>
-              <select name="priority" id="" class="input-s">
+              <select name="priority" class="input-s formInput" id="prioInput">
                 <option value="P3">P3</option>
                 <option value="P2">P2</option>
                 <option value="P1">P1</option>
