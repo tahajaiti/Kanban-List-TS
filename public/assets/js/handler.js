@@ -186,6 +186,9 @@ applyBtn.addEventListener("click", () => {
 	// save to localstorage
 	localStorage.setItem("tasks", JSON.stringify(tasks));
 
+	//sort
+	sortTask();
+
 	// create
 	createTasks();
 
