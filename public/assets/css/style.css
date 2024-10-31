@@ -1181,6 +1181,11 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
 .pt-3 {
   padding-top: 0.75rem;
 }
@@ -1482,5 +1487,10 @@ video {
 
   .\32xl\:overflow-hidden {
     overflow: hidden;
+  }
+
+  .\32xl\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 }
