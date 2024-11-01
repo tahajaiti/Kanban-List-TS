@@ -423,6 +423,7 @@ const sortTask = () => {
 	localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
+//search function
 searchInput.addEventListener("keyup", (e)=> {
 
 	let tasksData = JSON.parse(localStorage.getItem("tasks")) || [];
@@ -434,6 +435,7 @@ searchInput.addEventListener("keyup", (e)=> {
 	searchDIsplay(fileterdData);
 });
 
+//displaying the searched tasks
 const searchDIsplay = (taskSearched) => {
 	const swimLanes = {
 		todo: document.querySelectorAll(".swim-lane")[0],
