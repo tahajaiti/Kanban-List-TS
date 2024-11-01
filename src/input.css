@@ -36,6 +36,7 @@
 ::-webkit-scrollbar-track {
 	background: #ced4da;
 	border-bottom-right-radius: 15px;
+	border-top-left-radius: 15px;
 	border-right: 20px;
 	border-color: #212529;
 }

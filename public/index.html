@@ -30,15 +30,20 @@
   <!--  -->
 
   <!-- MAIN -->
-  <main class="mt-20 w-full h-fit">
+  <main class="mt-10 w-full h-fit">
+
+    <div class="w-1/2 xl:w-1/5 flex justify-center text-2xl mb-20 m-auto pr-2 bg-greyone text-whiteone border rounded-[15px]">
+      <input class="outline-none pl-3 bg-greyone text-whiteone rounded-[15px] w-full h-fit" type="text" name="q" id="searchInput">
+      <span class="icon-[line-md--search] text-3xl flex items-center" id="searchBtn"></span>
+    </div>
 
     <!-- SWIMLANES SECTION -->
     <section>
 
       <!-- SWIMLANES CONTAINER -->
-      <div class="flex justify-between gap-6 xl:px-10 2xl:gap-4 w-screen overflow-x-auto 2xl:overflow-hidden">
+      <div class="flex justify-between gap-6 xl:px-5 2xl:gap-4 w-screen overflow-x-auto 2xl:overflow-hidden">
         <!-- TODO SECTION -->
-        <div class="xl:w-[30rem] w-screen border-2 rounded-[15px] shadow-xl">
+        <div class="xl:w-[30rem] w-[95vw] border-2 rounded-[15px] shadow-xl">
           <!-- HEADER -->
           <header>
             <div class="flex justify-between bg-whiteone w-full p-3 rounded-tr-[15px] rounded-tl-[15px] shadow-2xl">
@@ -78,7 +83,7 @@
         <!--  -->
 
         <!-- DOING SECTION -->
-        <div class="xl:w-[30rem] w-screen border-2 rounded-[15px] shadow-xl">
+        <div class="xl:w-[30rem] w-[95vw] border-2 rounded-[15px] shadow-xl">
           <!-- HEADER -->
           <header>
             <div class="flex justify-between bg-whiteone w-full p-3 rounded-tr-[15px] rounded-tl-[15px] shadow-2xl">
@@ -105,7 +110,7 @@
 
 
         <!-- DONE SECTION -->
-        <div class="xl:w-[30rem] w-screen border-2 rounded-[15px] shadow-xl">
+        <div class="xl:w-[30rem] w-[95vw] border-2 rounded-[15px] shadow-xl">
           <!-- HEADER -->
           <header>
             <div class="flex justify-between bg-whiteone w-full p-3 rounded-tr-[15px] rounded-tl-[15px] shadow-2xl">
@@ -234,7 +239,7 @@
     <!--  -->
 
     <!-- FOOTER -->
-    <footer class="flex justify-center flex-col items-center gap-2 mt-36 text-black/30 text-2xl z-0">
+    <footer class="flex justify-center flex-col items-center gap-2 pt-10 text-black/30 text-2xl z-0">
       <h2 class="relative">TASKFLOW <span class="icon-[solar--copyright-broken] align-top text-[1rem] absolute"></span>
       </h2>
       <a href="https://github.com/tahajaiti" target="_blank" aria-label="Github Profile"><span
