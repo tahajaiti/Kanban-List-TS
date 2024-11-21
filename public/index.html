@@ -9,6 +9,7 @@
   <meta name="author" content="Taha Jaiti">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="icon" href="assets/icon.ico" type="image/x-icon">
   <title>TaskFlow - Task Manager</title>
@@ -175,7 +176,7 @@
     <section id="addDisplay"
       class="hidden sm:h-screen h-screen w-screen bg-greyoneop justify-center items-center backdrop-blur-xl absolute top-0 z-10">
       <!-- MAIN CONTAINER -->
-      <div
+      <div id="mainAdd"
         class="lg:w-fit lg:h-fit w-screen h-full bg-whiteone gap-4 rounded-[15px] pt-3 px-3 flex flex-col border border-greydark overflow-y-auto">
         <!--  -->
         <div class="flex justify-between items-center">
@@ -237,6 +238,69 @@
       <!--  -->
     </section>
     <!--  -->
+
+     <!-- FULL EDIT -->
+     <section id="editDisplay"
+     class="hidden sm:h-screen h-screen w-screen bg-greyoneop justify-center items-center backdrop-blur-xl absolute top-0 z-10">
+     <!-- MAIN CONTAINER -->
+     <div id="mainEdit"
+       class="lg:w-fit lg:h-fit w-screen h-full bg-whiteone gap-4 rounded-[15px] pt-3 px-3 flex flex-col border border-greydark overflow-y-auto">
+       <!--  -->
+       <div class="flex justify-between items-center">
+         <div class="text-2xl text-greytwo font-medium w-[35rem] text-center m-auto pl-12">
+           EDIT TASK
+         </div>
+         <span id="closeBtnEdit"
+           class="icon-[mdi--close] text-5xl text-greytwo hover:scale-110 hover:text-red-600 active:scale-95 active:text-red-900 cursor-pointer transition-all"></span>
+       </div>
+       <!--  -->
+
+       <!-- FORM -->
+       <div id="formsContainer">
+         <div class="addForm">
+           <div>
+             <label for="title" class="text-2xl text-greytwo">Title</label>
+             <input type="text" name="title" class="input-s formInput" id="nameEdit">
+           </div>
+           <div>
+             <label for="dcrp" class="text-2xl text-greytwo">Description</label>
+             <input type="text" name="dcrp" class="input-s max-w-xl formInput" id="dEdit">
+           </div>
+           <div>
+             <label for="date" class="text-2xl text-greytwo">Date</label>
+             <input type="date" name="date" class="input-s formInput" min="2020-01-01" id="dateEdit">
+           </div>
+           <div>
+             <label for="status" class="text-2xl text-greytwo">Status</label>
+             <select name="status" class="input-s formInput" id="statusEdit">
+               <option value="todo">To Do</option>
+               <option value="doing">Doing</option>
+               <option value="done">Done</option>
+             </select>
+           </div>
+           <div>
+             <label for="priority" class="text-2xl text-greytwo">Priority</label>
+             <select name="priority" class="input-s formInput" id="prioEdit">
+               <option value="P3">P3</option>
+               <option value="P2">P2</option>
+               <option value="P1">P1</option>
+             </select>
+           </div>
+         </div>
+       </div>
+       <!--  -->
+
+
+
+       <!-- APPLY BTN -->
+       <div id="applyEdit" class="btn-primary flex text-center p-2 m-auto justify-center mb-2">
+         APPLY
+       </div>
+       <!--  -->
+     </div>
+     <!--  -->
+   </section>
+   <!--  -->
 
     <!-- FOOTER -->
     <footer class="flex justify-center flex-col items-center gap-2 pt-10 text-black/30 text-2xl z-0">
