@@ -18,32 +18,44 @@ let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 // close and open add display
 addBtn.addEventListener("click", () => {
-	gsap.to("#addDisplay", {
-		display: "flex",
-		opacity: 1,
-		duration: 0.25,
+	anime({
+		targets: '#addDisplay',
+		opacity: [0, 1],
+		duration: 250,
+		easing: 'linear',
+		begin: () => {
+			document.querySelector('#addDisplay').style.display = 'flex';
+		},
 	});
-	gsap.to("#mainAdd", {
-		x: 0,
-		opacity: 1,
-		duration: 2,
-		ease: "elastic.out",
+
+	anime({
+		targets: '#mainAdd',
+		translateX: [100, 0],
+		opacity: [0, 1],
+		duration: 1000,
+		easing: 'easeOut',
 	});
 });
 
 closeBtnAdd.addEventListener("click", () => {
-	gsap.to("#mainAdd", {
-		x: -200,
+	anime({
+		targets: '#mainAdd',
+		translateX: -200,
 		opacity: 0,
-		duration: 0.7,
+		duration: 700,
+		easing: 'linear',
 	});
-	gsap.to("#addDisplay", {
+
+	anime({
+		targets: '#addDisplay',
 		opacity: 0,
-		duration: 0.25,
-		onComplete: () => {
-			gsap.set("#addDisplay", { display: "none" });
+		duration: 250,
+		easing: 'linear',
+		complete: () => {
+			document.querySelector('#addDisplay').style.display = 'none';
 		},
 	});
+
 });
 
 //mutliple add form
@@ -86,16 +98,19 @@ multiBtn.addEventListener("click", () => {
                 <option value="P1">P1</option>
               </select>
             </div>`;
-		gsap.set(newForm, {
-			y: -50,
+		anime.set(newForm, {
+			translateY: -50,
 			opacity: 0,
 		});
 		formContainer.appendChild(newForm);
-		gsap.to(newForm, {
-			y: 0,
+		anime({
+			targets: newForm,
+			translateY: 0,
 			opacity: 1,
-			duration: 0.25,
+			duration: 250,
+			easing: 'linear',
 		});
+
 	}
 });
 
@@ -106,14 +121,17 @@ removeBtn.addEventListener("click", () => {
 		return;
 	} else {
 		const formDelete = document.getElementById(`add${addCounter}`);
-		gsap.to(formDelete, {
-			y: -50,
+		anime({
+			targets: formDelete,
+			translateY: -50,
 			opacity: 0,
-			duration: 0.25,
-			onComplete: () => {
+			duration: 250,
+			easing: 'linear',
+			complete: () => {
 				formDelete.remove();
-			}
+			},
 		});
+
 
 		addCounter--;
 	}
@@ -186,7 +204,7 @@ const createTasks = (disaplyedTasks) => {
 		// add drag class
 		addDragEventListeners(newTask);
 		//add display on click
-		addDisplayEvenetListeners(newTask);
+		addDisplayEventListeners(newTask);
 		//calling the function
 		newTask.querySelector("#deleteBtn").addEventListener("click", (e) => {
 			e.stopPropagation();
@@ -302,14 +320,19 @@ applyBtn.addEventListener("click", () => {
 	updateStats();
 
 	// close display
-	gsap.to("#addDisplay", {
-		x: -200,
+	anime({
+		targets: '#addDisplay',
+		translateX: -200,
 		opacity: 0,
-		duration: 0.25,
-		onComplete: () => {
-			gsap.set("#addDisplay", { display: "none", x: 0, });
+		duration: 250,
+		easing: 'linear',
+		complete: () => {
+			const addDisplay = document.querySelector('#addDisplay');
+			addDisplay.style.display = 'none';
+			addDisplay.style.transform = 'translateX(0)';
 		},
 	});
+
 });
 
 //update status
@@ -522,6 +545,29 @@ searchInput.addEventListener("keyup", (e) => {
 
 	createTasks(fileterdData);
 });
+
+const loadDarkMode = () => {
+	const theme = localStorage.getItem('theme');
+	if (theme === 'dark') {
+		document.documentElement.classList.add('dark');
+	} else {
+		document.documentElement.classList.remove('dark');
+	}
+};
+
+document.getElementById('toggleDark').addEventListener('click', () => {
+	const theme = localStorage.getItem('theme');
+
+	if (theme === 'dark') {
+		document.documentElement.classList.remove('dark');
+		localStorage.setItem('theme', 'white');
+	} else {
+		document.documentElement.classList.add('dark');
+		localStorage.setItem('theme', 'dark');
+	}
+});
+
+loadDarkMode();
 
 // loading the tasks when the html file is fully loaded
 document.addEventListener("DOMContentLoaded", createTasks(tasks));
