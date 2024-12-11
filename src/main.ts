@@ -1,13 +1,15 @@
-import { display } from "./clickHandler.ts";
+import { display } from "./clickHandler";
+import { msg } from "./msgPop";
 
 const addBtn = document.querySelector<HTMLButtonElement>("#addBtn") as HTMLButtonElement;
 const addDisplay = document.querySelector<HTMLDivElement>("#addDisplay") as HTMLDivElement;
 const closeBtnAdd = document.querySelector<HTMLButtonElement>("#closeBtnAdd") as HTMLButtonElement;
+const formContainer = document.querySelector("#formsContainer") as HTMLDivElement;
 const applyBtn = document.querySelector<HTMLButtonElement>("#applyBtn");
 const displayContainer = document.querySelector<HTMLDivElement>("#displayTask");
 const closeDisplayBtn = document.querySelector<HTMLButtonElement>("#closeDisplayBtn");
 const deleteBtn = document.querySelector<HTMLButtonElement>("#deleteBtn");
-const multiBtn = document.querySelector<HTMLButtonElement>("#addForm");
+const multiBtn = document.querySelector<HTMLButtonElement>("#addForm") as HTMLButtonElement;
 const removeBtn = document.querySelector<HTMLButtonElement>("#removeForm");
 const searchInput = document.querySelector<HTMLInputElement>("#searchInput");
 const editForm = document.querySelector<HTMLButtonElement>("#editDisplay");
@@ -26,5 +28,10 @@ type task = {
 
 let tasks: task[] = JSON.parse(localStorage.getItem("tasks")!);
 
+//ADD DISPLAY
 display<HTMLDivElement, HTMLButtonElement>(addDisplay, addBtn, closeBtnAdd);
+
+multiBtn.addEventListener('click', () => {
+        msg<HTMLDivElement>('Max Forms',formContainer);
+})
 

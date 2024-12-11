@@ -26,6 +26,9 @@
 	.addForm{
 		@apply flex flex-row items-center mb-3 flex-wrap gap-2 bg-slate-400 p-2 rounded-md border border-greydark shadow-xl;
 	}
+	.typeMsg {
+		@apply block text-center text-xl font-bold text-red-500;
+	}
 }
 
 ::-webkit-scrollbar {
