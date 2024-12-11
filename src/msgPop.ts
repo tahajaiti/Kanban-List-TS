@@ -1,5 +1,5 @@
 export const msg = <B extends HTMLElement>(message:string, container:B): void => {
-    if (message.length != 0 && container){
+    if (message.length != 0 && container.parentElement){
         const oldMsg = document.querySelector('.typeMsg') as HTMLParagraphElement;
         if (oldMsg) {oldMsg.remove()}
 
@@ -8,7 +8,7 @@ export const msg = <B extends HTMLElement>(message:string, container:B): void =>
         newMsg.className = "typeMsg block text-center text-2xl font-bold"
         
         const child = container.firstChild as HTMLDivElement;
-        container.insertBefore(newMsg, child);
+        container.parentElement.appendChild(newMsg);
 
         setTimeout(() => {
             newMsg.remove();
