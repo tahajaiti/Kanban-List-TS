@@ -1,6 +1,6 @@
-import { display } from "./clickHandler";
-import { msg } from "./msgPop";
-import { createForm } from "./createForm";
+import { display } from "./clickHandler.js";
+import { msg } from "./msgPop.js";
+import { createForm, removeForm } from "./createForm.js";
 
 const addBtn = document.querySelector<HTMLButtonElement>(
 	"#addBtn",
@@ -22,7 +22,7 @@ const deleteBtn = document.querySelector<HTMLButtonElement>("#deleteBtn");
 const multiBtn = document.querySelector<HTMLButtonElement>(
 	"#addForm",
 ) as HTMLButtonElement;
-const removeBtn = document.querySelector<HTMLButtonElement>("#removeForm");
+const removeBtn = document.querySelector<HTMLButtonElement>("#removeForm") as HTMLButtonElement;
 const searchInput = document.querySelector<HTMLInputElement>("#searchInput");
 const editForm = document.querySelector<HTMLButtonElement>("#editDisplay");
 
@@ -51,4 +51,17 @@ multiBtn.addEventListener("click", () => {
 	}
 	addCounter++;
 	createForm(addCounter, formContainer);
+});
+
+//REMOVE FORM
+removeBtn.addEventListener('click', () => {
+    if (addCounter === 1){
+        msg<HTMLDivElement>("Cant go under one form", formContainer);
+        return;
+    }
+
+    const formDelete = document.getElementById(`add${addCounter}`) as HTMLDivElement;
+    removeForm<HTMLDivElement>(formDelete);
+
+    addCounter--;
 });

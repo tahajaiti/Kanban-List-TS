@@ -46,3 +46,20 @@ export const createForm = (id, container) => {
         });
     }
 };
+export const removeForm = (form) => {
+    if (form) {
+        anime({
+            targets: form,
+            translateY: -50,
+            opacity: 0,
+            duration: 250,
+            easing: 'linear',
+            complete: () => {
+                form.remove();
+            },
+        });
+    }
+    else {
+        console.log('Unexpected error');
+    }
+};
