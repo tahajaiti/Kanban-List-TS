@@ -1,5 +1,6 @@
 import { display } from "./clickHandler.js";
 import { msg } from "./msgPop.js";
+import { createForm } from "./createForm.js";
 const addBtn = document.querySelector("#addBtn");
 const addDisplay = document.querySelector("#addDisplay");
 const closeBtnAdd = document.querySelector("#closeBtnAdd");
@@ -17,6 +18,12 @@ let addCounter = 1;
 let tasks = JSON.parse(localStorage.getItem("tasks"));
 //ADD DISPLAY
 display(addDisplay, addBtn, closeBtnAdd);
-multiBtn.addEventListener('click', () => {
-    msg('Max Forms', formContainer);
+//MULTIPLE BUTTON
+multiBtn.addEventListener("click", () => {
+    if (addCounter >= 5) {
+        msg("Max Forms", formContainer);
+        return;
+    }
+    addCounter++;
+    createForm(addCounter, formContainer);
 });

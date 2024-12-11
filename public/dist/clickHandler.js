@@ -16,7 +16,7 @@ export const display = (target, open, close) => {
     close.addEventListener('click', () => {
         anime({
             target: target,
-            opacity: [0, 1],
+            opacity: [1, 0],
             duration: 250,
             easing: 'linear',
             complete: () => {
