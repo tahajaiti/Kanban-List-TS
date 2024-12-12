@@ -52,19 +52,19 @@ export const createForm = <T extends HTMLElement>(
 };
 
 export const removeForm = <T extends HTMLElement>(form: T): void => {
-		if (form){
-            anime({
-                targets: form,
-                translateY: -50,
-                opacity: 0,
-                duration: 250,
-                easing: 'linear',
-                complete: () => {
-                    form.remove();
-                },
-            });
-        } else {
-            console.log('Unexpected error');
-            
-        }
-}
+    if (form instanceof HTMLElement) {
+        anime({
+            targets: form,
+            translateY: -50,
+            opacity: 0,
+            duration: 250,
+            easing: "linear",
+            complete: () => {
+                form.remove();
+            },
+        });
+    } else {
+        console.error("Error in the sent form.");
+    }
+};
+

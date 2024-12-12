@@ -47,19 +47,19 @@ export const createForm = (id, container) => {
     }
 };
 export const removeForm = (form) => {
-    if (form) {
+    if (form instanceof HTMLElement) {
         anime({
             targets: form,
             translateY: -50,
             opacity: 0,
             duration: 250,
-            easing: 'linear',
+            easing: "linear",
             complete: () => {
                 form.remove();
             },
         });
     }
     else {
-        console.log('Unexpected error');
+        console.error("Error in the sent form.");
     }
 };
